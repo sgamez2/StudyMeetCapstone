@@ -12,6 +12,7 @@
 		20064A061F8BE3D800277F34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20064A051F8BE3D800277F34 /* Assets.xcassets */; };
 		20064A091F8BE3D800277F34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20064A071F8BE3D800277F34 /* LaunchScreen.storyboard */; };
 		20064A111F8BE6AF00277F34 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20064A101F8BE6AF00277F34 /* User.swift */; };
+		96429822426654C99F63AF79 /* Pods_StudyMeet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D23F2AE6F83B783EDB1178 /* Pods_StudyMeet.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,10 @@
 		20064A081F8BE3D800277F34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20064A0A1F8BE3D800277F34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20064A101F8BE6AF00277F34 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		20D516D71F8BF2EF00F68C7D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3EBFBF798552533A7B64CEED /* Pods-StudyMeet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMeet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StudyMeet/Pods-StudyMeet.debug.xcconfig"; sourceTree = "<group>"; };
+		6118D036FF918374B651136D /* Pods-StudyMeet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMeet.release.xcconfig"; path = "Pods/Target Support Files/Pods-StudyMeet/Pods-StudyMeet.release.xcconfig"; sourceTree = "<group>"; };
+		F3D23F2AE6F83B783EDB1178 /* Pods_StudyMeet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyMeet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96429822426654C99F63AF79 /* Pods_StudyMeet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +46,8 @@
 			children = (
 				200649FB1F8BE3D800277F34 /* StudyMeet */,
 				200649FA1F8BE3D800277F34 /* Products */,
+				6121F82EEDA51442B9799687 /* Pods */,
+				A3DDFCAE5538058446A2F96E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,6 +86,7 @@
 				20064A051F8BE3D800277F34 /* Assets.xcassets */,
 				20064A071F8BE3D800277F34 /* LaunchScreen.storyboard */,
 				20064A0A1F8BE3D800277F34 /* Info.plist */,
+				20D516D71F8BF2EF00F68C7D /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -104,6 +113,23 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		6121F82EEDA51442B9799687 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3EBFBF798552533A7B64CEED /* Pods-StudyMeet.debug.xcconfig */,
+				6118D036FF918374B651136D /* Pods-StudyMeet.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A3DDFCAE5538058446A2F96E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F3D23F2AE6F83B783EDB1178 /* Pods_StudyMeet.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -111,9 +137,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 20064A0D1F8BE3D800277F34 /* Build configuration list for PBXNativeTarget "StudyMeet" */;
 			buildPhases = (
+				72F8AB59811AECFB94BAA408 /* [CP] Check Pods Manifest.lock */,
 				200649F51F8BE3D800277F34 /* Sources */,
 				200649F61F8BE3D800277F34 /* Frameworks */,
 				200649F71F8BE3D800277F34 /* Resources */,
+				1E3CE9093DF2AC30E4164ADF /* [CP] Embed Pods Frameworks */,
+				D3654D428937C2E73EC99A4D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,6 +199,64 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1E3CE9093DF2AC30E4164ADF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-StudyMeet/Pods-StudyMeet-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StudyMeet/Pods-StudyMeet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		72F8AB59811AECFB94BAA408 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StudyMeet-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D3654D428937C2E73EC99A4D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StudyMeet/Pods-StudyMeet-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		200649F51F8BE3D800277F34 /* Sources */ = {
@@ -312,11 +399,12 @@
 		};
 		20064A0E1F8BE3D800277F34 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3EBFBF798552533A7B64CEED /* Pods-StudyMeet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7F44YU9SR7;
-				INFOPLIST_FILE = StudyMeet/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/StudyMeet/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SergioGamez.StudyMeet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -327,11 +415,12 @@
 		};
 		20064A0F1F8BE3D800277F34 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6118D036FF918374B651136D /* Pods-StudyMeet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7F44YU9SR7;
-				INFOPLIST_FILE = StudyMeet/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/StudyMeet/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SergioGamez.StudyMeet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
