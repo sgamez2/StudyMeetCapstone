@@ -64,9 +64,23 @@ class User {
         self.identifier = uuid
     }
     
+    var dictionaryRepresention: [String:Any] {
+        let dictionary: [String:Any] = [
+        firstNameKey: firstName,
+        lastNameKey: lastName,
+        bioKey: bio,
+        emailKey: email,
+        phoneNumberKey: phoneNumber as Any,
+        schoolNameKey: schoolName,
+        userNameKey: userName,
+        uuidKey: identifier.uuidString
+
+        ]
+        return dictionary
+    }
     
-    
-    
-    
-    
+    // PUT
+    var jsonData: Data? {
+        return try? JSONSerialization.data(withJSONObject: dictionaryRepresention, options: .prettyPrinted)
+    }
 }
