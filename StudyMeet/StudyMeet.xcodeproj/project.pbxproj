@@ -22,6 +22,9 @@
 
 /* Begin PBXFileReference section */
 		2002E69D1F8D3AE800581A4E /* LoginScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginScreen.storyboard; sourceTree = "<group>"; };
+		2002E6A01F8D444300581A4E /* Rainbow-Bridge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rainbow-Bridge.png"; sourceTree = "<group>"; };
+		2002E6A11F8D444300581A4E /* Terms of Use End User Lisence Agreement.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Terms of Use End User Lisence Agreement.txt"; sourceTree = "<group>"; };
+		2002E6A21F8D444300581A4E /* Rainbow Bridge Personal Use.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rainbow Bridge Personal Use.ttf"; sourceTree = "<group>"; };
 		200649F91F8BE3D800277F34 /* StudyMeet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyMeet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		200649FC1F8BE3D800277F34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20064A031F8BE3D800277F34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -51,6 +54,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2002E69F1F8D444300581A4E /* billy-argel_rainbow-bridge-personal-use */ = {
+			isa = PBXGroup;
+			children = (
+				2002E6A01F8D444300581A4E /* Rainbow-Bridge.png */,
+				2002E6A11F8D444300581A4E /* Terms of Use End User Lisence Agreement.txt */,
+				2002E6A21F8D444300581A4E /* Rainbow Bridge Personal Use.ttf */,
+			);
+			path = "billy-argel_rainbow-bridge-personal-use";
+			sourceTree = "<group>";
+		};
 		200649F01F8BE3D800277F34 = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +106,7 @@
 		20064A131F8BE6CA00277F34 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2002E69F1F8D444300581A4E /* billy-argel_rainbow-bridge-personal-use */,
 				200649FC1F8BE3D800277F34 /* AppDelegate.swift */,
 				20064A051F8BE3D800277F34 /* Assets.xcassets */,
 				20064A071F8BE3D800277F34 /* LaunchScreen.storyboard */,
