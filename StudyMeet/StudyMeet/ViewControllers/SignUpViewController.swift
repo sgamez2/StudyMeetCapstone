@@ -31,10 +31,16 @@ class SignUpViewController: UIViewController {
         bioDescriptionTextView.layer.borderWidth = 0.4
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // MARK: - IBActions
+    @IBAction func signUpButtonTapped(_ sender: Any) {
     }
+    @IBAction func cancelButtonTapped(_ sender: Any){
+        
+    }
+    @IBAction func imagePickerTapped(_ sender: Any){
+        
+    }
+    
     
 
     /*
