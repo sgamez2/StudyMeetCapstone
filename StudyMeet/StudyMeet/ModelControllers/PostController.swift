@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 class PostController {
     
     static var posts = [Post]()

@@ -114,46 +114,64 @@
                                         </constraints>
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ofc-q4-6Sq">
-                                        <rect key="frame" x="6" y="223" width="331" height="103"/>
+                                        <rect key="frame" x="6" y="223" width="331" height="80"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="103" id="io3-8W-5SQ"/>
+                                            <constraint firstAttribute="height" constant="80" id="io3-8W-5SQ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes"/>
                                     </textView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="h9C-se-LfQ">
-                                        <rect key="frame" x="8" y="348" width="327" height="202"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="h9C-se-LfQ">
+                                        <rect key="frame" x="8" y="325" width="327" height="225"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f3f-HD-l8f">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ufc-vg-Ldy">
                                                 <rect key="frame" x="0.0" y="0.0" width="327" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aga-RX-P9E">
-                                                <rect key="frame" x="0.0" y="43" width="327" height="30"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f3f-HD-l8f">
+                                                <rect key="frame" x="0.0" y="39" width="327" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aga-RX-P9E">
+                                                <rect key="frame" x="0.0" y="78" width="327" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="eRq-X7-Jap" id="f14-6d-eC9"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7HS-wX-il9">
-                                                <rect key="frame" x="0.0" y="86" width="327" height="30"/>
+                                                <rect key="frame" x="0.0" y="117" width="327" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="eRq-X7-Jap" id="MlO-Gy-sKl"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dGY-bC-sWx">
-                                                <rect key="frame" x="0.0" y="129" width="327" height="30"/>
+                                                <rect key="frame" x="0.0" y="156" width="327" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="eRq-X7-Jap" id="4NP-52-GlX"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="School name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="idK-jI-KE8">
-                                                <rect key="frame" x="0.0" y="172" width="327" height="30"/>
+                                                <rect key="frame" x="0.0" y="195" width="327" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="eRq-X7-Jap" id="7Af-Dw-pug"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -238,6 +256,7 @@
                         <outlet property="popUpView" destination="lmN-pw-qcu" id="nsW-xQ-qDu"/>
                         <outlet property="profileImage" destination="0Tv-aA-dIE" id="e8U-uI-bSA"/>
                         <outlet property="schoolNameTextField" destination="idK-jI-KE8" id="Egi-n0-9JO"/>
+                        <outlet property="usernameTextField" destination="Ufc-vg-Ldy" id="yCn-af-rsL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aNT-yu-zER" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -10,19 +10,21 @@ import Foundation
 
 class UserController {
     
+    static let shared = UserController()
+    
     static var users = [User]()
     
     private static let baseURL = URL(string: "https://studymeet-fc082.firebaseio.com/Users")
     
-    static func newUser(with firstName: String, lastName: String,
-                        bio: String, email: String, phoneNumber: Int, schoolName: String, userName: String,
+    static func newUserWith(firstName: String, lastName: String,
+                        bio: String, email: String, phoneNumber: String, schoolName: String, userName: String,
                         completion: @escaping (_ succes: Bool) -> Void){
         
         let user = User(firstName: firstName, lastName: lastName, bio: bio, email: email, phoneNumber: phoneNumber, schoolName: schoolName, userName: userName)
         
         guard let unwrappedURL = baseURL else {fatalError("Broken URL")}
         
-        let url = unwrappedURL.appendingPathComponent(user.identifier.uuidString).appendingPathComponent("json")
+        let url = unwrappedURL.appendingPathComponent(user.identifier.uuidString).appendingPathExtension("json")
         
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"

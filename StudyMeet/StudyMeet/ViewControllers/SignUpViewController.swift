@@ -10,11 +10,16 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     
-    
+    var user: User? {
+        didSet{
+            
+        }
+    }
     
     
     // MARK: - IBOutlets
     @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var bioDescriptionTextView: UITextView!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -26,6 +31,7 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         
         popUpView.layer.cornerRadius = 15
         profileImage.layer.cornerRadius = profileImage.frame.height / 2
@@ -36,10 +42,13 @@ class SignUpViewController: UIViewController {
     
     // MARK: - IBActions
     @IBAction func signUpButtonTapped(_ sender: Any) {
+        signUpClient()
     }
+    
     @IBAction func cancelButtonTapped(_ sender: Any){
-        
+        self.dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func imagePickerTapped(_ sender: Any){
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
@@ -65,7 +74,29 @@ class SignUpViewController: UIViewController {
         self.present(actionSheet, animated: true, completion: nil)
     }
     
+    // MARK: - Helper Functions
+    func signUpClient() {
+        guard let firstName = firstNameTextField.text,
+        let lastName = lastNameTextField.text,
+        let bio = bioDescriptionTextView.text,
+        let email = emailTextField.text,
+        let schoolName = schoolNameTextField.text,
+        let phoneNumber = schoolNameTextField.text,
+        let username = usernameTextField.text,
+        !firstName.isEmpty && !lastName.isEmpty && !username.isEmpty && !bio.isEmpty && !email.isEmpty
+            && !schoolName.isEmpty else { return }
+        
+            UserController.newUserWith(firstName: firstName, lastName: lastName, bio: bio, email: email, phoneNumber: phoneNumber, schoolName: schoolName, userName: username, completion: { (success) in
+                guard success else {return}
+                
+                self.dismiss(animated: true, completion: nil)
+            })
+        
+    }
+    
 }
+
+
 
 extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -84,7 +115,37 @@ extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationCon
     }
 }
 
-
+extension SignUpViewController: UITextFieldDelegate, UITextViewDelegate {
+    
+    // Start Editing The Text Field
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        moveTextField(textField, moveDistance: -200, up: true)
+    }
+    
+    // Finish Editing The Text Field
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        moveTextField(textField, moveDistance: -200, up: false)
+    }
+    
+    // Hide the keyboard when the return key pressed
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // Move the text field in a pretty animation!
+    func moveTextField(_ textField: UITextField, moveDistance: Int, up: Bool) {
+        let moveDuration = 0.3
+        let movement: CGFloat = CGFloat(up ? moveDistance : -moveDistance)
+        
+        UIView.beginAnimations("animateTextField", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(moveDuration)
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        UIView.commitAnimations()
+    }
+    
+}
 
 
 

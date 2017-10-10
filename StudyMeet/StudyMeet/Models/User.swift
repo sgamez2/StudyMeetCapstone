@@ -25,13 +25,13 @@ class User {
     let lastName: String
     let bio: String
     let email: String
-    let phoneNumber: Int?
+    let phoneNumber: String?
     let schoolName: String
     let userName: String
     let identifier: UUID
     
     // Memberwise INIT
-    init(firstName: String, lastName: String, bio: String, email: String, phoneNumber: Int?, schoolName: String, userName: String, identifier: UUID = UUID()) {
+    init(firstName: String, lastName: String, bio: String, email: String, phoneNumber: String?, schoolName: String, userName: String, identifier: UUID = UUID()) {
         
         self.firstName = firstName
         self.lastName = lastName
@@ -49,7 +49,7 @@ class User {
         let lastName = userDictionary[lastNameKey] as? String,
         let bio = userDictionary[bioKey] as? String,
         let email = userDictionary[emailKey] as? String,
-        let phoneNumber = userDictionary[phoneNumberKey] as? Int,
+        let phoneNumber = userDictionary[phoneNumberKey] as? String,
         let schoolName = userDictionary[schoolNameKey] as? String,
         let userName = userDictionary[userNameKey] as? String,
         let uuid = UUID(uuidString: identifier) else {return nil}
