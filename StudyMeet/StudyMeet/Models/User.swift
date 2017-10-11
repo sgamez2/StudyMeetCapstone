@@ -15,6 +15,7 @@ class User {
     private let lastNameKey = "lastName"
     private let bioKey = "bio"
     private let emailKey = "email"
+    private let passwordKey = "password"
     private let phoneNumberKey = "phoneNumber"
     private let schoolNameKey = "schoolName"
     private let userNameKey = "userName"
@@ -25,18 +26,20 @@ class User {
     let lastName: String
     let bio: String
     let email: String
-    let phoneNumber: String?
+    let password: String
+    let phoneNumber: String
     let schoolName: String
     let userName: String
-    let identifier: UUID
+    let identifier: String
     
     // Memberwise INIT
-    init(firstName: String, lastName: String, bio: String, email: String, phoneNumber: String?, schoolName: String, userName: String, identifier: UUID = UUID()) {
+    init(firstName: String, lastName: String, bio: String, email: String, password: String, phoneNumber: String, schoolName: String, userName: String, identifier: String) {
         
         self.firstName = firstName
         self.lastName = lastName
         self.bio = bio
         self.email = email
+        self.password = password
         self.phoneNumber = phoneNumber
         self.schoolName = schoolName
         self.userName = userName
@@ -49,15 +52,17 @@ class User {
         let lastName = userDictionary[lastNameKey] as? String,
         let bio = userDictionary[bioKey] as? String,
         let email = userDictionary[emailKey] as? String,
+        let password = userDictionary[passwordKey] as? String,
         let phoneNumber = userDictionary[phoneNumberKey] as? String,
         let schoolName = userDictionary[schoolNameKey] as? String,
         let userName = userDictionary[userNameKey] as? String,
-        let uuid = UUID(uuidString: identifier) else {return nil}
+        let uuid = userDictionary[uuidKey] as? String else {return nil}
         
         self.firstName = firstName
         self.lastName = lastName
         self.bio = bio
         self.email = email
+        self.password = password
         self.phoneNumber = phoneNumber
         self.schoolName = schoolName
         self.userName = userName
@@ -70,17 +75,18 @@ class User {
         lastNameKey: lastName,
         bioKey: bio,
         emailKey: email,
-        phoneNumberKey: phoneNumber as Any,
+        passwordKey: password,
+        phoneNumberKey: phoneNumber,
         schoolNameKey: schoolName,
         userNameKey: userName,
-        uuidKey: identifier.uuidString
-
+        uuidKey: identifier
         ]
         return dictionary
     }
     
-    // PUT
-    var jsonData: Data? {
-        return try? JSONSerialization.data(withJSONObject: dictionaryRepresention, options: .prettyPrinted)
-    }
+//    // PUT
+//    var jsonData: Data? {
+//        return try? JSONSerialization.data(withJSONObject: dictionaryRepresention, options: .prettyPrinted)
+//    }
 }
+

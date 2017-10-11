@@ -106,7 +106,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lmN-pw-qcu">
                                 <rect key="frame" x="16" y="30" width="343" height="607"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sebas" translatesAutoresizingMaskIntoConstraints="NO" id="0Tv-aA-dIE">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultProfilePicture" translatesAutoresizingMaskIntoConstraints="NO" id="0Tv-aA-dIE">
                                         <rect key="frame" x="111" y="53" width="120" height="160"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="3SD-9u-IFq"/>
@@ -114,16 +114,16 @@
                                         </constraints>
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ofc-q4-6Sq">
-                                        <rect key="frame" x="6" y="223" width="331" height="80"/>
+                                        <rect key="frame" x="6" y="223" width="331" height="63"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="io3-8W-5SQ"/>
+                                            <constraint firstAttribute="height" constant="63" id="io3-8W-5SQ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes"/>
                                     </textView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="h9C-se-LfQ">
-                                        <rect key="frame" x="8" y="325" width="327" height="225"/>
+                                        <rect key="frame" x="8" y="300" width="327" height="250"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ufc-vg-Ldy">
                                                 <rect key="frame" x="0.0" y="0.0" width="327" height="30"/>
@@ -131,23 +131,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f3f-HD-l8f">
-                                                <rect key="frame" x="0.0" y="39" width="327" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aga-RX-P9E">
-                                                <rect key="frame" x="0.0" y="78" width="327" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="eRq-X7-Jap" id="f14-6d-eC9"/>
-                                                </connections>
-                                            </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7HS-wX-il9">
-                                                <rect key="frame" x="0.0" y="117" width="327" height="30"/>
+                                                <rect key="frame" x="0.0" y="36.5" width="327" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -155,8 +140,29 @@
                                                     <outlet property="delegate" destination="eRq-X7-Jap" id="MlO-Gy-sKl"/>
                                                 </connections>
                                             </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qsV-QY-sMv">
+                                                <rect key="frame" x="0.0" y="73.5" width="327" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f3f-HD-l8f">
+                                                <rect key="frame" x="0.0" y="110" width="327" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aga-RX-P9E">
+                                                <rect key="frame" x="0.0" y="146.5" width="327" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="eRq-X7-Jap" id="f14-6d-eC9"/>
+                                                </connections>
+                                            </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dGY-bC-sWx">
-                                                <rect key="frame" x="0.0" y="156" width="327" height="30"/>
+                                                <rect key="frame" x="0.0" y="183.5" width="327" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
@@ -165,7 +171,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="School name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="idK-jI-KE8">
-                                                <rect key="frame" x="0.0" y="195" width="327" height="30"/>
+                                                <rect key="frame" x="0.0" y="220" width="327" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -221,7 +227,7 @@
                                     <constraint firstItem="fHL-5f-5x5" firstAttribute="leading" secondItem="lmN-pw-qcu" secondAttribute="leading" constant="30" id="A7E-9R-1h2"/>
                                     <constraint firstAttribute="trailing" secondItem="fHL-5f-5x5" secondAttribute="trailing" constant="32" id="Est-XZ-Bde"/>
                                     <constraint firstItem="ofc-q4-6Sq" firstAttribute="top" secondItem="WCk-uR-1eu" secondAttribute="bottom" constant="10" id="GeW-Ea-2YG"/>
-                                    <constraint firstItem="h9C-se-LfQ" firstAttribute="top" secondItem="ofc-q4-6Sq" secondAttribute="bottom" constant="22" id="KKd-u1-DfW"/>
+                                    <constraint firstItem="h9C-se-LfQ" firstAttribute="top" secondItem="ofc-q4-6Sq" secondAttribute="bottom" constant="14" id="KKd-u1-DfW"/>
                                     <constraint firstAttribute="trailing" secondItem="WCk-uR-1eu" secondAttribute="trailing" constant="112" id="PZ0-ah-RfA"/>
                                     <constraint firstAttribute="bottom" secondItem="7jT-94-5iN" secondAttribute="bottom" id="QlG-hc-ZJ1"/>
                                     <constraint firstAttribute="trailing" secondItem="h9C-se-LfQ" secondAttribute="trailing" constant="8" id="ROb-fd-MFp"/>
@@ -252,6 +258,7 @@
                         <outlet property="emailTextField" destination="7HS-wX-il9" id="oqp-kB-eNg"/>
                         <outlet property="firstNameTextField" destination="f3f-HD-l8f" id="898-FV-FcG"/>
                         <outlet property="lastNameTextField" destination="aga-RX-P9E" id="cE7-N8-tyx"/>
+                        <outlet property="passwordTextField" destination="qsV-QY-sMv" id="LvZ-Qm-DWQ"/>
                         <outlet property="phoneNumberTextField" destination="dGY-bC-sWx" id="bND-lV-wrB"/>
                         <outlet property="popUpView" destination="lmN-pw-qcu" id="nsW-xQ-qDu"/>
                         <outlet property="profileImage" destination="0Tv-aA-dIE" id="e8U-uI-bSA"/>
@@ -265,6 +272,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Sebas" width="750" height="1334"/>
+        <image name="DefaultProfilePicture" width="600" height="600"/>
     </resources>
 </document>

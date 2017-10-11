@@ -11,16 +11,13 @@ import FirebaseDatabase
 
 class SignUpViewController: UIViewController {
     
-    var user: User? {
-        didSet{
-            
-        }
-    }
+    var user: User?
     
     
     // MARK: - IBOutlets
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var bioDescriptionTextView: UITextView!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -29,7 +26,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var schoolNameTextField: UITextField!
     @IBOutlet weak var popUpView: UIView!
     
-    
+    // LifeCycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
@@ -81,24 +78,33 @@ class SignUpViewController: UIViewController {
             let lastName = lastNameTextField.text,
             let bio = bioDescriptionTextView.text,
             let email = emailTextField.text,
+            let password = passwordTextField.text,
             let schoolName = schoolNameTextField.text,
             let phoneNumber = phoneNumberTextField.text,
             let username = usernameTextField.text,
             !firstName.isEmpty && !lastName.isEmpty && !username.isEmpty && !bio.isEmpty && !email.isEmpty
                 && !schoolName.isEmpty else { return }
+
         
-        UserController.shared.newUserWith(firstName: firstName, lastName: lastName, bio: bio, email: email, phoneNumber: phoneNumber, schoolName: schoolName, userName: username, completion: { (success) in
-            guard success else {return}
-            
-            self.dismiss(animated: true, completion: nil)
+        UserController.shared.newUserWith(firstName: firstName, lastName: lastName, bio: bio, email: email, password: password, phoneNumber: phoneNumber, schoolName: schoolName, userName: username, completion: { (success) in
+            if success {
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                self.errorAlert()
+            }
         })
-        
     }
     
+     func errorAlert(){
+        let alert = UIAlertController(title: "Wow this is embarrassing...\n  something went wrong.", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action:UIAlertAction) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
-
-
+// Image picker for Profile Picture
 extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
@@ -116,6 +122,7 @@ extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationCon
     }
 }
 
+// Text Fields will no longer be covered by keyboard
 extension SignUpViewController: UITextFieldDelegate, UITextViewDelegate {
     
     // Start Editing The Text Field
@@ -145,10 +152,7 @@ extension SignUpViewController: UITextFieldDelegate, UITextViewDelegate {
         self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
         UIView.commitAnimations()
     }
-    
 }
-
-
 
 /*
  // MARK: - Navigation

@@ -14,7 +14,7 @@ class PostController {
     static var posts = [Post]()
     
     static func newPost(with date: Date, postDescription: String, postTitle: String, schoolName: String,
-                        members: Int, completion: @escaping (_ success: Bool) -> Void) {
+                        members: [String] , completion: @escaping (_ success: Bool) -> Void) {
         
 //        let post = Post(date: date, postDescription: postDescription, postTitle: postTitle, schoolName: schoolName, members: members)
         
