@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class SignUpViewController: UIViewController {
     
@@ -53,15 +54,15 @@ class SignUpViewController: UIViewController {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         
-        let actionSheet = UIAlertController(title: "Add Photo", message: "Choose profile picture.", preferredStyle: .actionSheet)
+        let actionSheet = UIAlertController(title: "Choose profile \npicture.", message: nil, preferredStyle: .actionSheet)
         
-        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
+        actionSheet.addAction(UIAlertAction(title: "Camera Roll", style: .default, handler: { (action:UIAlertAction) in
             imagePickerController.sourceType = .photoLibrary
             imagePickerController.allowsEditing = true
             self.present(imagePickerController, animated: true, completion: nil)
         }))
         
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
+        actionSheet.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: { (action:UIAlertAction) in
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 imagePickerController.sourceType = .camera
                 self.present(imagePickerController, animated: true, completion: nil)
@@ -77,20 +78,20 @@ class SignUpViewController: UIViewController {
     // MARK: - Helper Functions
     func signUpClient() {
         guard let firstName = firstNameTextField.text,
-        let lastName = lastNameTextField.text,
-        let bio = bioDescriptionTextView.text,
-        let email = emailTextField.text,
-        let schoolName = schoolNameTextField.text,
-        let phoneNumber = schoolNameTextField.text,
-        let username = usernameTextField.text,
-        !firstName.isEmpty && !lastName.isEmpty && !username.isEmpty && !bio.isEmpty && !email.isEmpty
-            && !schoolName.isEmpty else { return }
+            let lastName = lastNameTextField.text,
+            let bio = bioDescriptionTextView.text,
+            let email = emailTextField.text,
+            let schoolName = schoolNameTextField.text,
+            let phoneNumber = phoneNumberTextField.text,
+            let username = usernameTextField.text,
+            !firstName.isEmpty && !lastName.isEmpty && !username.isEmpty && !bio.isEmpty && !email.isEmpty
+                && !schoolName.isEmpty else { return }
         
-            UserController.newUserWith(firstName: firstName, lastName: lastName, bio: bio, email: email, phoneNumber: phoneNumber, schoolName: schoolName, userName: username, completion: { (success) in
-                guard success else {return}
-                
-                self.dismiss(animated: true, completion: nil)
-            })
+        UserController.shared.newUserWith(firstName: firstName, lastName: lastName, bio: bio, email: email, phoneNumber: phoneNumber, schoolName: schoolName, userName: username, completion: { (success) in
+            guard success else {return}
+            
+            self.dismiss(animated: true, completion: nil)
+        })
         
     }
     
@@ -158,4 +159,3 @@ extension SignUpViewController: UITextFieldDelegate, UITextViewDelegate {
  // Pass the selected object to the new view controller.
  }
  */
-

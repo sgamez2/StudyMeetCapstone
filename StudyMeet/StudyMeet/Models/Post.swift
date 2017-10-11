@@ -22,9 +22,9 @@ class Post {
     let postDescription: String
     let postTitle: String
     let schoolName: String
-    let members: Int
+    var members: [String]
     
-    init(date: Date, postDescription: String, postTitle: String, schoolName: String, members: Int){
+    init(date: Date, postDescription: String, postTitle: String, schoolName: String, members: [String] = []){
         self.date = date
         self.postDescription = postDescription
         self.postTitle = postTitle
@@ -37,7 +37,7 @@ class Post {
             let postDescription = postsDictionary[postDescriptionKey] as? String,
             let postTitle = postsDictionary[postTitleKey] as? String,
             let schoolName = postsDictionary[schoolNameKey] as? String,
-            let members = postsDictionary[membersKey] as? Int else {return nil}
+            let members = postsDictionary[membersKey] as? [String] else {return nil}
         
         self.date = date
         self.postDescription = postDescription
@@ -61,4 +61,3 @@ class Post {
         return try? JSONSerialization.data(withJSONObject: dictionaryRepresentaion, options: .prettyPrinted)
     }
 }
-
