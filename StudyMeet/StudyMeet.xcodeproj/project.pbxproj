@@ -17,6 +17,7 @@
 		20064A091F8BE3D800277F34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20064A071F8BE3D800277F34 /* LaunchScreen.storyboard */; };
 		20064A111F8BE6AF00277F34 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20064A101F8BE6AF00277F34 /* User.swift */; };
 		20290A2C1F8D7E32001CBADC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20290A2B1F8D7E32001CBADC /* GoogleService-Info.plist */; };
+		208F584E1F8EFC0300498447 /* addPost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 208F584D1F8EFC0300498447 /* addPost.storyboard */; };
 		20D516D91F8C1E0E00F68C7D /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D516D81F8C1E0E00F68C7D /* UserController.swift */; };
 		20D516DB1F8C344000F68C7D /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D516DA1F8C344000F68C7D /* PostListViewController.swift */; };
 		20D516DD1F8D29D700F68C7D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D516DC1F8D29D700F68C7D /* Post.swift */; };
@@ -39,6 +40,7 @@
 		20064A0A1F8BE3D800277F34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20064A101F8BE6AF00277F34 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		20290A2B1F8D7E32001CBADC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		208F584D1F8EFC0300498447 /* addPost.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = addPost.storyboard; sourceTree = "<group>"; };
 		20D516D81F8C1E0E00F68C7D /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		20D516DA1F8C344000F68C7D /* PostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
 		20D516DC1F8D29D700F68C7D /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			children = (
 				20064A021F8BE3D800277F34 /* Main.storyboard */,
 				2002E69D1F8D3AE800581A4E /* LoginScreen.storyboard */,
+				208F584D1F8EFC0300498447 /* addPost.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2002E6A71F8D612B00581A4E /* Rainbow Bridge Personal Use.ttf in Resources */,
+				208F584E1F8EFC0300498447 /* addPost.storyboard in Resources */,
 				20064A091F8BE3D800277F34 /* LaunchScreen.storyboard in Resources */,
 				20064A061F8BE3D800277F34 /* Assets.xcassets in Resources */,
 				2002E69E1F8D3AE800581A4E /* LoginScreen.storyboard in Resources */,

@@ -108,7 +108,12 @@
                         <viewLayoutGuide key="safeArea" id="LAl-Hh-XqC"/>
                     </view>
                     <navigationItem key="navigationItem" title="Study Meets" id="XYu-mr-CBC">
-                        <barButtonItem key="rightBarButtonItem" image="addsnaptostory" id="A8E-jV-3fI"/>
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="dHe-oY-jW4"/>
+                        <barButtonItem key="rightBarButtonItem" image="addsnaptostory" id="A8E-jV-3fI">
+                            <connections>
+                                <segue destination="HJ6-cD-EvQ" kind="show" id="yAz-gc-Jzq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QmS-Gi-eLh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -171,6 +176,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vSx-td-VvC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="292" y="192"/>
+        </scene>
+        <!--addPost-->
+        <scene sceneID="a34-c4-Pr7">
+            <objects>
+                <viewControllerPlaceholder storyboardName="addPost" id="HJ6-cD-EvQ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yQg-nT-agh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3142" y="-1115"/>
         </scene>
         <!--Meets-->
         <scene sceneID="wph-WD-Kcf">
