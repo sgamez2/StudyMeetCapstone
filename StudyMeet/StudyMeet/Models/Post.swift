@@ -16,19 +16,25 @@ class Post {
     private let postTitleKey = "postTitle"
     private let schoolNameKey = "schoolName"
     private let membersKey = "members"
+    private let creatorUidKey = "creatorUid"
+    private let studySubjectKey = "studySubject"
     
     // Properties
     let date: Date
     let postDescription: String
     let postTitle: String
+    let creatorUid: String
     let schoolName: String
+    let studySubject: String
     var members: [String]
     
-    init(date: Date, postDescription: String, postTitle: String, schoolName: String, members: [String] = []){
+    init(date: Date, postDescription: String, postTitle: String, creatorUid: String, schoolName: String, studySubject: String, members: [String] = []){
         self.date = date
         self.postDescription = postDescription
         self.postTitle = postTitle
+        self.creatorUid = creatorUid
         self.schoolName = schoolName
+        self.studySubject = studySubject
         self.members = members
     }
     
@@ -37,12 +43,16 @@ class Post {
             let postDescription = postsDictionary[postDescriptionKey] as? String,
             let postTitle = postsDictionary[postTitleKey] as? String,
             let schoolName = postsDictionary[schoolNameKey] as? String,
+            let creatorUid = postsDictionary[creatorUidKey] as? String,
+            let studySubject = postsDictionary[studySubjectKey] as? String,
             let members = postsDictionary[membersKey] as? [String] else {return nil}
         
         self.date = date
         self.postDescription = postDescription
         self.postTitle = postTitle
         self.schoolName = schoolName
+        self.studySubject = studySubject
+        self.creatorUid = creatorUid
         self.members = members
     }
     
@@ -52,6 +62,8 @@ class Post {
             postDescriptionKey: postDescription,
             postTitleKey: postTitle,
             schoolNameKey: schoolName,
+            studySubjectKey: studySubject,
+            creatorUidKey: creatorUid,
             membersKey: members
         ]
         return dictionary

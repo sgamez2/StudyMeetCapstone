@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import FirebaseDatabase
 
 class PostController {
     
@@ -16,7 +16,7 @@ class PostController {
     static func newPost(with date: Date, postDescription: String, postTitle: String, schoolName: String,
                         members: [String] , completion: @escaping (_ success: Bool) -> Void) {
         
-//        let post = Post(date: date, postDescription: postDescription, postTitle: postTitle, schoolName: schoolName, members: members)
+        let post = Post(date: date, postDescription: postDescription, postTitle: postTitle, schoolName: schoolName, members: members)
         
     }
 }
