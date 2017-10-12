@@ -23,6 +23,7 @@
 		20D516DD1F8D29D700F68C7D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D516DC1F8D29D700F68C7D /* Post.swift */; };
 		20D516DF1F8D30A900F68C7D /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D516DE1F8D30A900F68C7D /* PostController.swift */; };
 		20E2FC231F8FD5AC006548D2 /* SubjectsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E2FC221F8FD5AC006548D2 /* SubjectsHelper.swift */; };
+		20E2FC261F8FE5EF006548D2 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E2FC251F8FE5EF006548D2 /* AddPostViewController.swift */; };
 		96429822426654C99F63AF79 /* Pods_StudyMeet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D23F2AE6F83B783EDB1178 /* Pods_StudyMeet.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		20D516DC1F8D29D700F68C7D /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		20D516DE1F8D30A900F68C7D /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
 		20E2FC221F8FD5AC006548D2 /* SubjectsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectsHelper.swift; sourceTree = "<group>"; };
+		20E2FC251F8FE5EF006548D2 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
 		3EBFBF798552533A7B64CEED /* Pods-StudyMeet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMeet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StudyMeet/Pods-StudyMeet.debug.xcconfig"; sourceTree = "<group>"; };
 		6118D036FF918374B651136D /* Pods-StudyMeet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMeet.release.xcconfig"; path = "Pods/Target Support Files/Pods-StudyMeet/Pods-StudyMeet.release.xcconfig"; sourceTree = "<group>"; };
 		F3D23F2AE6F83B783EDB1178 /* Pods_StudyMeet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyMeet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +154,7 @@
 				20D516DA1F8C344000F68C7D /* PostListViewController.swift */,
 				2002E6A31F8D488100581A4E /* SignUpViewController.swift */,
 				2002E6A51F8D488F00581A4E /* LoginViewController.swift */,
+				20E2FC251F8FE5EF006548D2 /* AddPostViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -304,9 +307,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-StudyMeet/Pods-StudyMeet-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -326,6 +334,7 @@
 				20064A111F8BE6AF00277F34 /* User.swift in Sources */,
 				2002E6A61F8D488F00581A4E /* LoginViewController.swift in Sources */,
 				200649FD1F8BE3D800277F34 /* AppDelegate.swift in Sources */,
+				20E2FC261F8FE5EF006548D2 /* AddPostViewController.swift in Sources */,
 				20E2FC231F8FD5AC006548D2 /* SubjectsHelper.swift in Sources */,
 				20D516DD1F8D29D700F68C7D /* Post.swift in Sources */,
 				20D516DF1F8D30A900F68C7D /* PostController.swift in Sources */,

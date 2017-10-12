@@ -1,15 +1,14 @@
 //
-//  LoginViewController.swift
+//  AddPostViewController.swift
 //  StudyMeet
 //
-//  Created by Sergio Gamez on 10/10/17.
+//  Created by Sergio Gamez on 10/12/17.
 //  Copyright © 2017 Sergio Gamez. All rights reserved.
 //
 
 import UIKit
 
-
-class LoginViewController: UIViewController {
+class AddPostViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

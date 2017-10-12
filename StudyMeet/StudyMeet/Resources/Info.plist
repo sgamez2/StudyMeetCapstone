@@ -56,5 +56,11 @@
 	<array>
 		<string>Rainbow Bridge Personal Use</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>We need to access your Camera to be able to set a profile picture.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need to access your Photo Library to be able to set a profile picture.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Show your location on the map</string>
 </dict>
 </plist>
