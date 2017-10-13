@@ -8,6 +8,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Rainbow Bridge Personal Use.ttf">
+            <string>RainbowBridgePersonalUse</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Messages-->
         <scene sceneID="Q6i-o1-b1y">
@@ -109,16 +114,16 @@
                     </view>
                     <navigationItem key="navigationItem" title="Study Meets" id="XYu-mr-CBC">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="dHe-oY-jW4"/>
-                        <barButtonItem key="rightBarButtonItem" image="addsnaptostory" id="A8E-jV-3fI">
+                        <barButtonItem key="rightBarButtonItem" image="createPost" id="A8E-jV-3fI">
                             <connections>
-                                <segue destination="HJ6-cD-EvQ" kind="show" id="yAz-gc-Jzq"/>
+                                <segue destination="fVb-RM-kn0" kind="show" id="JzX-c6-s5L"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QmS-Gi-eLh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2225" y="-431"/>
+            <point key="canvasLocation" x="2224.8000000000002" y="-431.33433283358323"/>
         </scene>
         <!--Title-->
         <scene sceneID="vEZ-3y-wkh">
@@ -155,7 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BbC-gL-xsf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3220" y="-431"/>
+            <point key="canvasLocation" x="3220" y="-409"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="RV6-iH-CSZ">
@@ -177,14 +182,6 @@
             </objects>
             <point key="canvasLocation" x="292" y="192"/>
         </scene>
-        <!--addPost-->
-        <scene sceneID="a34-c4-Pr7">
-            <objects>
-                <viewControllerPlaceholder storyboardName="addPost" id="HJ6-cD-EvQ" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yQg-nT-agh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3142" y="-1115"/>
-        </scene>
         <!--Meets-->
         <scene sceneID="wph-WD-Kcf">
             <objects>
@@ -204,8 +201,160 @@
             </objects>
             <point key="canvasLocation" x="1329.5999999999999" y="-430.88455772113946"/>
         </scene>
+        <!--Create a StudyMeet-->
+        <scene sceneID="itZ-XN-vLt">
+            <objects>
+                <viewController id="fVb-RM-kn0" customClass="AddPostViewController" customModule="StudyMeet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6G5-ZZ-GIE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJ9-UM-M0S">
+                                <rect key="frame" x="15" y="439" width="243" height="35"/>
+                                <fontDescription key="fontDescription" name="RainbowBridgePersonalUse" family="Rainbow Bridge Personal Use" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WWY-uq-k2K">
+                                <rect key="frame" x="75" y="625" width="225" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Search a study place"/>
+                                <connections>
+                                    <action selector="choseAPlaceButtonTapped:" destination="fVb-RM-kn0" eventType="touchUpInside" id="F2G-3J-aya"/>
+                                </connections>
+                            </button>
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5S3-Cj-RvB">
+                                <rect key="frame" x="15" y="581.5" width="170" height="36.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" address="YES"/>
+                            </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9XT-S6-9jb">
+                                <rect key="frame" x="15" y="76" width="345" height="70"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Generic Subject" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sbw-fo-2se">
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Subject Subcategory (ex: MTH280 CAL)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s5l-zR-Skz">
+                                        <rect key="frame" x="0.0" y="40" width="345" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="sbw-fo-2se" firstAttribute="width" secondItem="9XT-S6-9jb" secondAttribute="width" id="arN-q2-aml"/>
+                                    <constraint firstItem="s5l-zR-Skz" firstAttribute="width" secondItem="9XT-S6-9jb" secondAttribute="width" id="gxi-MO-U0N"/>
+                                </constraints>
+                            </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ocx-jJ-3O9">
+                                <rect key="frame" x="15" y="169" width="345" height="247.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eu7-wd-qwU">
+                                <rect key="frame" x="15" y="534" width="76" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="jWj-x6-ewS"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Where">
+                                        <attributes>
+                                            <font key="NSFont" size="30" name="RainbowBridgePersonalUse"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="1"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPE-d4-8xH">
+                                <rect key="frame" x="15" y="573" width="340" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7yM-Si-Pso">
+                                <rect key="frame" x="15" y="489" width="345" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.84706419830000002" green="0.95180787160000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="690-xT-HSc" firstAttribute="trailing" secondItem="WWY-uq-k2K" secondAttribute="trailing" constant="75" id="6Aw-1h-xLM"/>
+                            <constraint firstItem="Eu7-wd-qwU" firstAttribute="top" secondItem="7yM-Si-Pso" secondAttribute="bottom" constant="15" id="6vL-sc-QHQ"/>
+                            <constraint firstItem="GPE-d4-8xH" firstAttribute="top" secondItem="Eu7-wd-qwU" secondAttribute="bottom" constant="4" id="915-I7-puj"/>
+                            <constraint firstItem="NJ9-UM-M0S" firstAttribute="leading" secondItem="690-xT-HSc" secondAttribute="leading" constant="15" id="9gf-VI-KnR"/>
+                            <constraint firstItem="WWY-uq-k2K" firstAttribute="top" secondItem="5S3-Cj-RvB" secondAttribute="bottom" constant="7" id="B3s-wm-b4d"/>
+                            <constraint firstItem="Eu7-wd-qwU" firstAttribute="height" secondItem="NJ9-UM-M0S" secondAttribute="height" id="B6e-iX-kDf"/>
+                            <constraint firstItem="ocx-jJ-3O9" firstAttribute="leading" secondItem="690-xT-HSc" secondAttribute="leading" constant="15" id="Csn-ca-Hra"/>
+                            <constraint firstItem="NJ9-UM-M0S" firstAttribute="top" secondItem="ocx-jJ-3O9" secondAttribute="bottom" constant="22.5" id="EtQ-sf-oyW"/>
+                            <constraint firstItem="690-xT-HSc" firstAttribute="trailing" secondItem="GPE-d4-8xH" secondAttribute="trailing" constant="20" id="ITa-W6-P3e"/>
+                            <constraint firstItem="7yM-Si-Pso" firstAttribute="top" secondItem="NJ9-UM-M0S" secondAttribute="bottom" constant="15" id="J4u-LJ-rOe"/>
+                            <constraint firstItem="690-xT-HSc" firstAttribute="trailing" secondItem="5S3-Cj-RvB" secondAttribute="trailing" constant="190" id="J6E-U2-oaG"/>
+                            <constraint firstItem="690-xT-HSc" firstAttribute="trailing" secondItem="NJ9-UM-M0S" secondAttribute="trailing" constant="117" id="JuQ-Hh-Yzg"/>
+                            <constraint firstItem="690-xT-HSc" firstAttribute="trailing" secondItem="Eu7-wd-qwU" secondAttribute="trailing" constant="284" id="KHq-HL-CDH"/>
+                            <constraint firstItem="9XT-S6-9jb" firstAttribute="leading" secondItem="690-xT-HSc" secondAttribute="leading" constant="15" id="VgX-VF-fwh"/>
+                            <constraint firstItem="Eu7-wd-qwU" firstAttribute="leading" secondItem="690-xT-HSc" secondAttribute="leading" constant="15" id="bgm-hz-Aq1"/>
+                            <constraint firstItem="ocx-jJ-3O9" firstAttribute="top" secondItem="9XT-S6-9jb" secondAttribute="bottom" constant="23" id="ehI-gA-16l"/>
+                            <constraint firstItem="5S3-Cj-RvB" firstAttribute="leading" secondItem="690-xT-HSc" secondAttribute="leading" constant="15" id="i2f-sJ-aPy"/>
+                            <constraint firstItem="690-xT-HSc" firstAttribute="bottom" secondItem="WWY-uq-k2K" secondAttribute="bottom" constant="10" id="kEQ-dB-zA7"/>
+                            <constraint firstItem="GPE-d4-8xH" firstAttribute="leading" secondItem="690-xT-HSc" secondAttribute="leading" constant="15" id="kez-le-jFi"/>
+                            <constraint firstItem="690-xT-HSc" firstAttribute="trailing" secondItem="7yM-Si-Pso" secondAttribute="trailing" constant="15" id="oHj-vk-sWH"/>
+                            <constraint firstItem="690-xT-HSc" firstAttribute="trailing" secondItem="9XT-S6-9jb" secondAttribute="trailing" constant="15" id="odo-km-b0s"/>
+                            <constraint firstItem="690-xT-HSc" firstAttribute="trailing" secondItem="ocx-jJ-3O9" secondAttribute="trailing" constant="15" id="osG-68-O6Q"/>
+                            <constraint firstItem="9XT-S6-9jb" firstAttribute="top" secondItem="690-xT-HSc" secondAttribute="top" constant="12" id="qNg-VW-OKC"/>
+                            <constraint firstItem="7yM-Si-Pso" firstAttribute="leading" secondItem="690-xT-HSc" secondAttribute="leading" constant="15" id="sBB-9D-b30"/>
+                            <constraint firstItem="WWY-uq-k2K" firstAttribute="leading" secondItem="690-xT-HSc" secondAttribute="leading" constant="75" id="slQ-8o-FaA"/>
+                            <constraint firstItem="5S3-Cj-RvB" firstAttribute="top" secondItem="GPE-d4-8xH" secondAttribute="bottom" constant="8.5" id="whP-dr-lbE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="690-xT-HSc"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Create a StudyMeet" id="ItY-ds-q9K">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="OFz-Nt-Afd">
+                            <connections>
+                                <action selector="postButtonTapped:" destination="fVb-RM-kn0" id="1XU-q2-7av"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="datePicker" destination="c2d-zT-rji" id="ol5-oe-Rae"/>
+                        <outlet property="dateTextField" destination="7yM-Si-Pso" id="tXG-jm-ozj"/>
+                        <outlet property="genericSubjectTextField" destination="sbw-fo-2se" id="64U-iH-ldG"/>
+                        <outlet property="meetAddressTextView" destination="5S3-Cj-RvB" id="gVT-yv-Hfi"/>
+                        <outlet property="placeNameLabel" destination="GPE-d4-8xH" id="ufS-oH-csr"/>
+                        <outlet property="postDescriptionTextView" destination="ocx-jJ-3O9" id="air-d1-V3l"/>
+                        <outlet property="subjectSubcategoryTextField" destination="s5l-zR-Skz" id="noU-Fp-Pkv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BqL-On-Ajz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" id="c2d-zT-rji">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="152"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <date key="date" timeIntervalSinceReferenceDate="529464502.01287299">
+                        <!--2017-10-12 01:28:22 +0000-->
+                    </date>
+                    <connections>
+                        <action selector="datePickerValueChanged:" destination="fVb-RM-kn0" eventType="valueChanged" id="TQG-86-6M2"/>
+                    </connections>
+                </datePicker>
+                <tapGestureRecognizer id="c0l-CG-m95">
+                    <connections>
+                        <action selector="userTappedView:" destination="fVb-RM-kn0" id="IGb-pQ-boc"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3220" y="-1107"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="addsnaptostory" width="26" height="26"/>
+        <image name="createPost" width="26" height="26"/>
     </resources>
 </document>

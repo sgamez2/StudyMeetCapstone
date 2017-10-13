@@ -31,9 +31,6 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
         postDescriptionTextView.layer.cornerRadius = 15
         meetAddressTextView.layer.cornerRadius = 10
         dateTextField.inputView = datePicker
-        self.navigationItem.title = "Create a StudyMeet"
-        postButton.title = "Post"
-        self.navigationItem.setRightBarButton(postButton, animated: true)
     }
     
     // MARK: - @IBActions
@@ -49,12 +46,17 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
         
         present(placePicker, animated: true, completion: nil)
     }
+    
     @IBAction func userTappedView(_ sender: Any) {
         self.dateTextField.resignFirstResponder()
         self.genericSubjectTextField.resignFirstResponder()
         self.subjectSubcategoryTextField.resignFirstResponder()
         self.postDescriptionTextView.resignFirstResponder()
         self.resignFirstResponder()
+    }
+    
+    @IBAction func postButtonTapped(_ sender: Any) {
+        
     }
     
     // MARK: - Helper Methods
