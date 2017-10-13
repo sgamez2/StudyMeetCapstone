@@ -11,6 +11,8 @@ import GooglePlacePicker
 
 class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDelegate {
     
+    // Properties
+    let postButton = UIBarButtonItem()
     
     // MARK: - IBOutlets
     @IBOutlet weak var genericSubjectTextField: UITextField!
@@ -19,18 +21,25 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var meetAddressTextView: UITextView!
     @IBOutlet weak var placeNameLabel: UILabel!
+    @IBOutlet weak var dateTextField: UITextField!
     
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         placeNameLabel.isHidden = true
         postDescriptionTextView.layer.cornerRadius = 15
         meetAddressTextView.layer.cornerRadius = 10
-        
-    }    
+        dateTextField.inputView = datePicker
+        self.navigationItem.title = "Create a StudyMeet"
+        postButton.title = "Post"
+        self.navigationItem.setRightBarButton(postButton, animated: true)
+    }
     
     // MARK: - @IBActions
-    @IBAction func datePickerValueChanged(_ sender: Any) {
+    @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
+        sender.minimumDate = Date()
+        self.dateTextField.text = sender.date.stringValue()
     }
     
     @IBAction func choseAPlaceButtonTapped(_ sender: Any) {
@@ -40,14 +49,21 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
         
         present(placePicker, animated: true, completion: nil)
     }
+    @IBAction func userTappedView(_ sender: Any) {
+        self.dateTextField.resignFirstResponder()
+        self.genericSubjectTextField.resignFirstResponder()
+        self.subjectSubcategoryTextField.resignFirstResponder()
+        self.postDescriptionTextView.resignFirstResponder()
+        self.resignFirstResponder()
+    }
     
     // MARK: - Helper Methods
     
     // Google Place Picker helper
     func placePicker(_ viewController: GMSPlacePickerViewController, didPick place: GMSPlace) {
         viewController.dismiss(animated: true, completion: nil)
-        placeNameLabel.text = "Place name: \(place.name)"
-        meetAddressTextView.text = "Address: \(place.formattedAddress ?? "")"
+        placeNameLabel.text = "\(place.name)"
+        meetAddressTextView.text = "Address: \n\(place.formattedAddress ?? "")"
         
         if meetAddressTextView.text.isEmpty {
             meetAddressTextView.isHidden = true
@@ -73,5 +89,4 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
      // Pass the selected object to the new view controller.
      }
      */
-    
 }
