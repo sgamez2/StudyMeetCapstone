@@ -8,14 +8,15 @@
 
 import UIKit
 import GooglePlacePicker
+import SearchTextField
 
-class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDelegate {
+class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDelegate, UITextFieldDelegate {
     
     // Properties
     let postButton = UIBarButtonItem()
     
     // MARK: - IBOutlets
-    @IBOutlet weak var genericSubjectTextField: UITextField!
+    @IBOutlet weak var genericSubjectTextField: SearchTextField!
     @IBOutlet weak var subjectSubcategoryTextField: UITextField!
     @IBOutlet weak var postDescriptionTextView: UITextView!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -31,6 +32,7 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
         postDescriptionTextView.layer.cornerRadius = 15
         meetAddressTextView.layer.cornerRadius = 10
         dateTextField.inputView = datePicker
+        searchGenericSubject()
     }
     
     // MARK: - @IBActions
@@ -56,14 +58,65 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
     }
     
     @IBAction func postButtonTapped(_ sender: Any) {
-        
+        addPost()
     }
     
     // MARK: - Helper Methods
     
+    func searchGenericSubject() {
+        let subjects = HelperMethods.shared.genericSubjectsArray
+        guard let subjectSearch = genericSubjectTextField else {return}
+        subjectSearch.filterStrings(subjects)
+        subjectSearch.minCharactersNumberToStartFiltering = 1
+        subjectSearch.maxNumberOfResults = 15
+        subjectSearch.inlineMode = true
+    }
+    
+//    func textFieldDidEndEditing(_ textField: SearchTextField) {
+//
+//    }
+    
+    // Create post
+    func addPost(){
+        guard let genericSubject = genericSubjectTextField.text,
+            let subcategorySubject = subjectSubcategoryTextField.text,
+            let postDescription = postDescriptionTextView.text,
+            let date = dateTextField.text,
+            let address = meetAddressTextView.text,
+            let student = StudentController.shared.currentStudent,
+            !genericSubject.isEmpty && !subcategorySubject.isEmpty && !postDescription.isEmpty && !date.isEmpty && !address.isEmpty
+            else { missingFieldsAlert(); return }
+        
+        PostController.shared.newPost(with: date, postDescription: postDescription, postTitle: subcategorySubject, schoolName: student.schoolName, creatorUid: student.identifier, studySubject: genericSubject, members:[student.identifier]) { (success) in
+            if success {
+                self.successAlert()
+            } else {
+                print("Error with posting")
+            }
+        }
+    }
+    
+    func missingFieldsAlert(){
+        let alert = UIAlertController(title: "Missing text fields", message: "Please fill out all fields.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: { (action:UIAlertAction) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func successAlert(){
+        let alert = UIAlertController(title: "Account setup successful!", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action:UIAlertAction) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
     // Google Place Picker helper
     func placePicker(_ viewController: GMSPlacePickerViewController, didPick place: GMSPlace) {
         viewController.dismiss(animated: true, completion: nil)
+        viewController.accessibilityActivate()
         placeNameLabel.text = "\(place.name)"
         meetAddressTextView.text = "Address: \n\(place.formattedAddress ?? "")"
         
@@ -81,7 +134,7 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
         viewController.dismiss(animated: true, completion: nil)
         print("No Place Selected")
     }
-
+    
     /*
      // MARK: - Navigation
      

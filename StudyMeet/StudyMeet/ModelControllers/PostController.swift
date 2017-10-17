@@ -15,10 +15,10 @@ class PostController {
     static var posts = [Post]()
     let postRef = Database.database().reference()
     
-    func newPost(with date: Date, postDescription: String, postTitle: String, schoolName: String, creatorUid: String, studySubject: String, members: [String] , completion: @escaping (_ success: Bool) -> Void) {
+    func newPost(with date: String, postDescription: String, postTitle: String, schoolName: String, creatorUid: String, studySubject: String, members: [String] , completion: @escaping (_ success: Bool) -> Void) {
         
         let post = Post(date: date, postDescription: postDescription, postTitle: postTitle, creatorUid: creatorUid, schoolName: schoolName, studySubject: studySubject, members: members)
-        guard let currentUser = UserController.shared.currentUser else { return }
+        guard let currentUser = StudentController.shared.currentStudent else { return }
         postRef.child("Posts").child(currentUser.identifier).setValue(post.dictionaryRepresentaion)
         completion(true)
     }

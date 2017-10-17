@@ -11,7 +11,7 @@ import FirebaseDatabase
 
 class SignUpViewController: UIViewController {
     
-    var user: User?
+    var student: Student?
     
     
     // MARK: - IBOutlets
@@ -32,10 +32,16 @@ class SignUpViewController: UIViewController {
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         
         popUpView.layer.cornerRadius = 15
-        profileImage.layer.cornerRadius = profileImage.frame.height / 2
+        
         bioDescriptionTextView.layer.cornerRadius = 15
         bioDescriptionTextView.layer.borderColor = UIColor.lightGray.cgColor
         bioDescriptionTextView.layer.borderWidth = 0.4
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        profileImage.layer.cornerRadius = profileImage.frame.size.height / 2
+        profileImage.layer.masksToBounds = true
     }
     
     // MARK: - IBActions
@@ -83,26 +89,35 @@ class SignUpViewController: UIViewController {
             let phoneNumber = phoneNumberTextField.text,
             let username = usernameTextField.text,
             !firstName.isEmpty && !lastName.isEmpty && !username.isEmpty && !bio.isEmpty && !email.isEmpty
-                && !schoolName.isEmpty else { return }
-
+                && !schoolName.isEmpty else { errorAlert(); return }
         
-        UserController.shared.newUserWith(firstName: firstName, lastName: lastName, bio: bio, email: email, password: password, phoneNumber: phoneNumber, schoolName: schoolName, userName: username, completion: { (success) in
+        
+        StudentController.shared.newStudentWith(firstName: firstName, lastName: lastName, bio: bio, email: email, password: password, phoneNumber: phoneNumber, schoolName: schoolName, userName: username, completion: { (success) in
             if success {
-                self.dismiss(animated: true, completion: nil)
+                self.successAlert()
             } else {
                 self.errorAlert()
             }
         })
     }
     
-     func errorAlert(){
-        let alert = UIAlertController(title: "Wow this is embarrassing...\n  something went wrong.", message: nil, preferredStyle: .alert)
+    func successAlert(){
+        let alert = UIAlertController(title: "Account setup successful!", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action:UIAlertAction) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func errorAlert(){
+        let alert = UIAlertController(title: "Please fill out all textfields", message: "Phone number is optional.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action:UIAlertAction) in
             alert.dismiss(animated: true, completion: nil)
         }))
         self.present(alert, animated: true, completion: nil)
     }
 }
+
 
 // Image picker for Profile Picture
 extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

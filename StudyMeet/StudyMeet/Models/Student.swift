@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  Student.swift
 //  StudyMeet
 //
 //  Created by Sergio Gamez on 10/9/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class User {
+class Student {
     
     // MARK: - Private Keys
     private let firstNameKey = "firstName"
@@ -47,7 +47,7 @@ class User {
     }
     
     // Failable INIT
-    init?(userDictionary: [String:Any], identifier: String) {
+    init?(userDictionary: [String:Any]) {
         guard let firstName = userDictionary[firstNameKey] as? String,
         let lastName = userDictionary[lastNameKey] as? String,
         let bio = userDictionary[bioKey] as? String,

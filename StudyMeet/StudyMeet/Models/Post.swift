@@ -20,7 +20,7 @@ class Post {
     private let studySubjectKey = "studySubject"
     
     // Properties
-    let date: Date
+    let date: String
     let postDescription: String
     let postTitle: String
     let creatorUid: String
@@ -28,7 +28,7 @@ class Post {
     let studySubject: String
     var members: [String]
     
-    init(date: Date, postDescription: String, postTitle: String, creatorUid: String, schoolName: String, studySubject: String, members: [String] = []){
+    init(date: String, postDescription: String, postTitle: String, creatorUid: String, schoolName: String, studySubject: String, members: [String] = []){
         self.date = date
         self.postDescription = postDescription
         self.postTitle = postTitle
@@ -39,7 +39,7 @@ class Post {
     }
     
     init?(postsDictionary: [String:Any]) {
-        guard let date = postsDictionary[dateKey] as? Date,
+        guard let date = postsDictionary[dateKey] as? String,
             let postDescription = postsDictionary[postDescriptionKey] as? String,
             let postTitle = postsDictionary[postTitleKey] as? String,
             let schoolName = postsDictionary[schoolNameKey] as? String,

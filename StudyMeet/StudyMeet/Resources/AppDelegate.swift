@@ -16,14 +16,13 @@ import GooglePlaces
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
         GMSPlacesClient.provideAPIKey("AIzaSyDegURsAPgVPEOSZJl9F9nNXIoyh3_37nY")
         GMSServices.provideAPIKey("AIzaSyDegURsAPgVPEOSZJl9F9nNXIoyh3_37nY")
-        
         
         return true
     }

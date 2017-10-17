@@ -15,9 +15,9 @@
 		20064A041F8BE3D800277F34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20064A021F8BE3D800277F34 /* Main.storyboard */; };
 		20064A061F8BE3D800277F34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20064A051F8BE3D800277F34 /* Assets.xcassets */; };
 		20064A091F8BE3D800277F34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20064A071F8BE3D800277F34 /* LaunchScreen.storyboard */; };
-		20064A111F8BE6AF00277F34 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20064A101F8BE6AF00277F34 /* User.swift */; };
+		20064A111F8BE6AF00277F34 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20064A101F8BE6AF00277F34 /* Student.swift */; };
 		20290A2C1F8D7E32001CBADC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20290A2B1F8D7E32001CBADC /* GoogleService-Info.plist */; };
-		20D516D91F8C1E0E00F68C7D /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D516D81F8C1E0E00F68C7D /* UserController.swift */; };
+		20D516D91F8C1E0E00F68C7D /* StudentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D516D81F8C1E0E00F68C7D /* StudentController.swift */; };
 		20D516DB1F8C344000F68C7D /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D516DA1F8C344000F68C7D /* PostListViewController.swift */; };
 		20D516DD1F8D29D700F68C7D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D516DC1F8D29D700F68C7D /* Post.swift */; };
 		20D516DF1F8D30A900F68C7D /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D516DE1F8D30A900F68C7D /* PostController.swift */; };
@@ -40,9 +40,9 @@
 		20064A051F8BE3D800277F34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20064A081F8BE3D800277F34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20064A0A1F8BE3D800277F34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20064A101F8BE6AF00277F34 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		20064A101F8BE6AF00277F34 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		20290A2B1F8D7E32001CBADC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		20D516D81F8C1E0E00F68C7D /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		20D516D81F8C1E0E00F68C7D /* StudentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentController.swift; sourceTree = "<group>"; };
 		20D516DA1F8C344000F68C7D /* PostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
 		20D516DC1F8D29D700F68C7D /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		20D516DE1F8D30A900F68C7D /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 		20064A121F8BE6B900277F34 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				20064A101F8BE6AF00277F34 /* User.swift */,
+				20064A101F8BE6AF00277F34 /* Student.swift */,
 				20D516DC1F8D29D700F68C7D /* Post.swift */,
 			);
 			path = Models;
@@ -141,7 +141,7 @@
 		20064A151F8BE6F000277F34 /* ModelControllers */ = {
 			isa = PBXGroup;
 			children = (
-				20D516D81F8C1E0E00F68C7D /* UserController.swift */,
+				20D516D81F8C1E0E00F68C7D /* StudentController.swift */,
 				20D516DE1F8D30A900F68C7D /* PostController.swift */,
 			);
 			path = ModelControllers;
@@ -267,6 +267,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-StudyMeet/Pods-StudyMeet-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SearchTextField/SearchTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -274,6 +275,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SearchTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -329,8 +331,8 @@
 			files = (
 				20D516DB1F8C344000F68C7D /* PostListViewController.swift in Sources */,
 				2002E6A41F8D488100581A4E /* SignUpViewController.swift in Sources */,
-				20D516D91F8C1E0E00F68C7D /* UserController.swift in Sources */,
-				20064A111F8BE6AF00277F34 /* User.swift in Sources */,
+				20D516D91F8C1E0E00F68C7D /* StudentController.swift in Sources */,
+				20064A111F8BE6AF00277F34 /* Student.swift in Sources */,
 				2002E6A61F8D488F00581A4E /* LoginViewController.swift in Sources */,
 				20E19B121F9034AF005A5EEA /* DateFormatter.swift in Sources */,
 				200649FD1F8BE3D800277F34 /* AppDelegate.swift in Sources */,
@@ -478,6 +480,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7F44YU9SR7;
 				INFOPLIST_FILE = "$(SRCROOT)/StudyMeet/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SergioGamez.StudyMeet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -494,6 +497,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7F44YU9SR7;
 				INFOPLIST_FILE = "$(SRCROOT)/StudyMeet/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SergioGamez.StudyMeet;
 				PRODUCT_NAME = "$(TARGET_NAME)";

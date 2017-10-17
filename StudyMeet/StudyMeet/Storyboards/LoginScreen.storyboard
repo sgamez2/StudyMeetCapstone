@@ -14,10 +14,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="aqp-bO-Q7Q">
             <objects>
-                <viewController id="iVl-oa-Suo" sceneMemberID="viewController">
+                <viewController id="iVl-oa-Suo" customClass="LoginViewController" customModule="StudyMeet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YS5-Wi-bgL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,7 +46,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="52" height="30"/>
                                         <state key="normal" title="Login"/>
                                         <connections>
-                                            <segue destination="kqZ-KZ-kT6" kind="show" id="208-tZ-rjl"/>
+                                            <action selector="loginButtonTapped:" destination="iVl-oa-Suo" eventType="touchUpInside" id="qdO-pc-eDQ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c98-xi-Yyj">
@@ -82,6 +82,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cVg-53-JBo"/>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="FgS-Xz-XRg" id="hRX-A6-FbP"/>
+                        <outlet property="passwordTextField" destination="YAW-yy-l9Z" id="dRG-MA-BBy"/>
+                        <outlet property="usernameTextField" destination="aw1-xL-no4" id="izF-3l-uvs"/>
+                        <segue destination="kqZ-KZ-kT6" kind="showDetail" identifier="toMain" action="showViewController:sender:" id="362-Wy-AQ4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cBl-U0-yD3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -107,9 +113,9 @@
                                 <rect key="frame" x="16" y="30" width="343" height="607"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultProfilePicture" translatesAutoresizingMaskIntoConstraints="NO" id="0Tv-aA-dIE">
-                                        <rect key="frame" x="111" y="53" width="120" height="160"/>
+                                        <rect key="frame" x="90" y="53" width="160" height="160"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="120" id="3SD-9u-IFq"/>
+                                            <constraint firstAttribute="width" constant="160" id="3SD-9u-IFq"/>
                                             <constraint firstAttribute="height" constant="160" id="iFY-Mf-vOF"/>
                                         </constraints>
                                     </imageView>
@@ -198,6 +204,7 @@
                                                 <state key="normal" title="Sign up"/>
                                                 <connections>
                                                     <action selector="signUpButtonTapped:" destination="eRq-X7-Jap" eventType="touchUpInside" id="58E-Xd-ayf"/>
+                                                    <segue destination="kqZ-KZ-kT6" kind="show" identifier="" id="Jp1-9w-ia0"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfH-jd-Ui1">
@@ -213,7 +220,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WCk-uR-1eu">
-                                        <rect key="frame" x="111" y="53" width="120" height="160"/>
+                                        <rect key="frame" x="90" y="53" width="161" height="160"/>
                                         <connections>
                                             <action selector="imagePickerTapped:" destination="eRq-X7-Jap" eventType="touchUpInside" id="G7W-M5-hNx"/>
                                         </connections>
@@ -228,19 +235,19 @@
                                     <constraint firstAttribute="trailing" secondItem="fHL-5f-5x5" secondAttribute="trailing" constant="32" id="Est-XZ-Bde"/>
                                     <constraint firstItem="ofc-q4-6Sq" firstAttribute="top" secondItem="WCk-uR-1eu" secondAttribute="bottom" constant="10" id="GeW-Ea-2YG"/>
                                     <constraint firstItem="h9C-se-LfQ" firstAttribute="top" secondItem="ofc-q4-6Sq" secondAttribute="bottom" constant="14" id="KKd-u1-DfW"/>
-                                    <constraint firstAttribute="trailing" secondItem="WCk-uR-1eu" secondAttribute="trailing" constant="112" id="PZ0-ah-RfA"/>
                                     <constraint firstAttribute="bottom" secondItem="7jT-94-5iN" secondAttribute="bottom" id="QlG-hc-ZJ1"/>
                                     <constraint firstAttribute="trailing" secondItem="h9C-se-LfQ" secondAttribute="trailing" constant="8" id="ROb-fd-MFp"/>
                                     <constraint firstItem="0Tv-aA-dIE" firstAttribute="top" secondItem="fHL-5f-5x5" secondAttribute="bottom" constant="2" id="SXT-F8-brY"/>
-                                    <constraint firstItem="WCk-uR-1eu" firstAttribute="leading" secondItem="lmN-pw-qcu" secondAttribute="leading" constant="111" id="VYJ-dM-2qR"/>
                                     <constraint firstItem="WCk-uR-1eu" firstAttribute="top" secondItem="fHL-5f-5x5" secondAttribute="bottom" constant="2" id="WdE-2O-D7e"/>
                                     <constraint firstAttribute="trailing" secondItem="7jT-94-5iN" secondAttribute="trailing" constant="145" id="aGD-aY-cEP"/>
+                                    <constraint firstAttribute="trailing" secondItem="WCk-uR-1eu" secondAttribute="trailing" constant="92" id="ayF-8X-cbR"/>
                                     <constraint firstItem="7jT-94-5iN" firstAttribute="leading" secondItem="lmN-pw-qcu" secondAttribute="leading" constant="145" id="bcU-37-EcI"/>
                                     <constraint firstItem="fHL-5f-5x5" firstAttribute="top" secondItem="lmN-pw-qcu" secondAttribute="top" constant="11" id="bwR-5x-YoB"/>
+                                    <constraint firstItem="WCk-uR-1eu" firstAttribute="centerX" secondItem="lmN-pw-qcu" secondAttribute="centerX" constant="-1" id="eko-qd-V8B"/>
                                     <constraint firstItem="h9C-se-LfQ" firstAttribute="leading" secondItem="lmN-pw-qcu" secondAttribute="leading" constant="8" id="mvE-BX-lCS"/>
-                                    <constraint firstAttribute="trailing" secondItem="0Tv-aA-dIE" secondAttribute="trailing" constant="112" id="nYa-HY-eac"/>
+                                    <constraint firstItem="WCk-uR-1eu" firstAttribute="leading" secondItem="lmN-pw-qcu" secondAttribute="leading" constant="90" id="nin-rF-fKp"/>
                                     <constraint firstAttribute="trailing" secondItem="ofc-q4-6Sq" secondAttribute="trailing" constant="6" id="soc-bQ-wXR"/>
-                                    <constraint firstItem="0Tv-aA-dIE" firstAttribute="leading" secondItem="lmN-pw-qcu" secondAttribute="leading" constant="111" id="tWC-1o-AUs"/>
+                                    <constraint firstItem="0Tv-aA-dIE" firstAttribute="leading" secondItem="lmN-pw-qcu" secondAttribute="leading" constant="90" id="tWC-1o-AUs"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -268,10 +275,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aNT-yu-zER" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="133.59999999999999" y="136.28185907046478"/>
+            <point key="canvasLocation" x="-10" y="398"/>
         </scene>
     </scenes>
     <resources>
         <image name="DefaultProfilePicture" width="600" height="600"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="362-Wy-AQ4"/>
+    </inferredMetricsTieBreakers>
 </document>
