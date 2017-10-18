@@ -8,15 +8,15 @@
 
 import UIKit
 import GooglePlacePicker
-import SearchTextField
 
 class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDelegate, UITextFieldDelegate {
     
     // Properties
+    let subjectsPicker = UIPickerView()
     let postButton = UIBarButtonItem()
     
     // MARK: - IBOutlets
-    @IBOutlet weak var genericSubjectTextField: SearchTextField!
+    @IBOutlet weak var genericSubjectTextField: UITextField!
     @IBOutlet weak var subjectSubcategoryTextField: UITextField!
     @IBOutlet weak var postDescriptionTextView: UITextView!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -32,7 +32,12 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
         postDescriptionTextView.layer.cornerRadius = 15
         meetAddressTextView.layer.cornerRadius = 10
         dateTextField.inputView = datePicker
-        searchGenericSubject()
+        subjectPicker()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
     }
     
     // MARK: - @IBActions
@@ -62,19 +67,11 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
     }
     
     // MARK: - Helper Methods
-    
-    func searchGenericSubject() {
-        let subjects = HelperMethods.shared.genericSubjectsArray
-        guard let subjectSearch = genericSubjectTextField else {return}
-        subjectSearch.filterStrings(subjects)
-        subjectSearch.minCharactersNumberToStartFiltering = 1
-        subjectSearch.maxNumberOfResults = 15
-        subjectSearch.inlineMode = true
+    func subjectPicker() {
+        genericSubjectTextField.inputView = subjectsPicker
+        subjectsPicker.delegate = self
+        subjectsPicker.dataSource = self 
     }
-    
-//    func textFieldDidEndEditing(_ textField: SearchTextField) {
-//
-//    }
     
     // Create post
     func addPost(){
@@ -144,4 +141,23 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
      // Pass the selected object to the new view controller.
      }
      */
+}
+extension AddPostViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return HelperMethods.shared.genericSubjectsArray.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return HelperMethods.shared.genericSubjectsArray[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        genericSubjectTextField.text = HelperMethods.shared.genericSubjectsArray[row]
+        
+    }
 }

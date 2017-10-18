@@ -17,6 +17,7 @@
 		20064A091F8BE3D800277F34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20064A071F8BE3D800277F34 /* LaunchScreen.storyboard */; };
 		20064A111F8BE6AF00277F34 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20064A101F8BE6AF00277F34 /* Student.swift */; };
 		20290A2C1F8D7E32001CBADC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20290A2B1F8D7E32001CBADC /* GoogleService-Info.plist */; };
+		20D4771A1F97EBDF00C79B72 /* StudyPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D477191F97EBDF00C79B72 /* StudyPostTableViewCell.swift */; };
 		20D516D91F8C1E0E00F68C7D /* StudentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D516D81F8C1E0E00F68C7D /* StudentController.swift */; };
 		20D516DB1F8C344000F68C7D /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D516DA1F8C344000F68C7D /* PostListViewController.swift */; };
 		20D516DD1F8D29D700F68C7D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D516DC1F8D29D700F68C7D /* Post.swift */; };
@@ -42,6 +43,7 @@
 		20064A0A1F8BE3D800277F34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20064A101F8BE6AF00277F34 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		20290A2B1F8D7E32001CBADC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		20D477191F97EBDF00C79B72 /* StudyPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyPostTableViewCell.swift; sourceTree = "<group>"; };
 		20D516D81F8C1E0E00F68C7D /* StudentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentController.swift; sourceTree = "<group>"; };
 		20D516DA1F8C344000F68C7D /* PostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
 		20D516DC1F8D29D700F68C7D /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			children = (
 				20064A021F8BE3D800277F34 /* Main.storyboard */,
 				2002E69D1F8D3AE800581A4E /* LoginScreen.storyboard */,
+				20D4771B1F97EBEA00C79B72 /* Views */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -156,6 +159,15 @@
 				20E2FC251F8FE5EF006548D2 /* AddPostViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		20D4771B1F97EBEA00C79B72 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				20D477191F97EBDF00C79B72 /* StudyPostTableViewCell.swift */,
+			);
+			name = Views;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		20E2FC241F8FD5B2006548D2 /* Helpers */ = {
@@ -334,6 +346,7 @@
 				20D516D91F8C1E0E00F68C7D /* StudentController.swift in Sources */,
 				20064A111F8BE6AF00277F34 /* Student.swift in Sources */,
 				2002E6A61F8D488F00581A4E /* LoginViewController.swift in Sources */,
+				20D4771A1F97EBDF00C79B72 /* StudyPostTableViewCell.swift in Sources */,
 				20E19B121F9034AF005A5EEA /* DateFormatter.swift in Sources */,
 				200649FD1F8BE3D800277F34 /* AppDelegate.swift in Sources */,
 				20E2FC261F8FE5EF006548D2 /* AddPostViewController.swift in Sources */,
