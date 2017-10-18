@@ -52,10 +52,5 @@ class StudentController {
             }
         }
     }
-    
-//    func fetchStudentFromDatabase(_ uid: String) -> Student? {
-//
-//
-//    }
 }
 

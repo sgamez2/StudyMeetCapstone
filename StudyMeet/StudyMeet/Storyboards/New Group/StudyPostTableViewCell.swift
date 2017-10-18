@@ -10,15 +10,18 @@ import UIKit
 
 class StudyPostTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    // MARK: - 
+    @IBOutlet weak var profileImageView: UIView!
+    @IBOutlet weak var subcategorySubjectLabel: UILabel!
+    @IBOutlet weak var genericSubjectLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    
+    func updateViews(post: Post) {
+        subcategorySubjectLabel.text = post.subcategorySubject
+        genericSubjectLabel.text = post.studySubject
+        dateLabel.text = post.date
+        descriptionTextView.text = post.postDescription
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+    
 }

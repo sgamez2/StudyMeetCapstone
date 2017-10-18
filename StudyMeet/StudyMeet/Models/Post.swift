@@ -18,6 +18,7 @@ class Post {
     private let membersKey = "members"
     private let creatorUidKey = "creatorUid"
     private let studySubjectKey = "studySubject"
+    private let subcategorySubjectKey = "subcategorySubject"
     
     // Properties
     let date: String
@@ -26,15 +27,17 @@ class Post {
     let creatorUid: String
     let schoolName: String
     let studySubject: String
+    let subcategorySubject: String
     var members: [String]
     
-    init(date: String, postDescription: String, postTitle: String, creatorUid: String, schoolName: String, studySubject: String, members: [String] = []){
+    init(date: String, postDescription: String, postTitle: String, creatorUid: String, schoolName: String, studySubject: String, subcategorySubject: String, members: [String] = []){
         self.date = date
         self.postDescription = postDescription
         self.postTitle = postTitle
         self.creatorUid = creatorUid
         self.schoolName = schoolName
         self.studySubject = studySubject
+        self.subcategorySubject = subcategorySubject
         self.members = members
     }
     
@@ -45,6 +48,7 @@ class Post {
             let schoolName = postsDictionary[schoolNameKey] as? String,
             let creatorUid = postsDictionary[creatorUidKey] as? String,
             let studySubject = postsDictionary[studySubjectKey] as? String,
+            let subcategorySubject = postsDictionary[subcategorySubjectKey] as? String,
             let members = postsDictionary[membersKey] as? [String] else {return nil}
         
         self.date = date
@@ -52,6 +56,7 @@ class Post {
         self.postTitle = postTitle
         self.schoolName = schoolName
         self.studySubject = studySubject
+        self.subcategorySubject = subcategorySubject
         self.creatorUid = creatorUid
         self.members = members
     }
@@ -63,6 +68,7 @@ class Post {
             postTitleKey: postTitle,
             schoolNameKey: schoolName,
             studySubjectKey: studySubject,
+            subcategorySubjectKey: subcategorySubject,
             creatorUidKey: creatorUid,
             membersKey: members
         ]

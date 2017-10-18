@@ -8,17 +8,34 @@
 
 import UIKit
 
-class PostListViewController: UIViewController {
-
+class PostListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+  
+    @IBOutlet var postTableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.postTableView.reloadData()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+   
+    // MARK: - Helper Methods
+    
+    // Search Bar
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchSubject = searchBar.text else {return}
+        PostController.shared.fetchPosts(by: searchSubject)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return PostController.shared.posts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = self.postTableView.dequeueReusableCell(withIdentifier: "studyPostCell", for: indexPath) as? StudyPostTableViewCell else {return UITableViewCell()}
+        
+        let post = PostController.shared.posts[indexPath.row]
+        cell.updateViews(post: post)
+        return cell
     }
     
 

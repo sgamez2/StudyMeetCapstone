@@ -28,7 +28,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AP5-yS-1ye" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1329" y="997"/>
+            <point key="canvasLocation" x="1165" y="1246"/>
         </scene>
         <!--Profile-->
         <scene sceneID="HCB-30-U5u">
@@ -44,7 +44,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WOy-ch-wIR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1329" y="1775"/>
+            <point key="canvasLocation" x="409" y="1271"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ODX-XP-ocZ">
@@ -56,11 +56,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="zY1-3m-KoN"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="KPo-BN-z0F"/>
+                    <tabBarItem key="tabBarItem" title="" systemItem="topRated" id="KPo-BN-z0F"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYv-Uv-gja" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1329" y="263"/>
+            <point key="canvasLocation" x="1329" y="350"/>
         </scene>
         <!--Study Meets-->
         <scene sceneID="RXy-dG-9q7">
@@ -70,9 +70,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search Subjects" id="3IY-8g-UfK">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="studyPostCell" rowHeight="103" id="qzd-zc-yUw">
-                                <rect key="frame" x="0.0" y="28" width="375" height="103"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="studyPostCell" rowHeight="103" id="qzd-zc-yUw" customClass="StudyPostTableViewCell" customModule="StudyMeet" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="375" height="103"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qzd-zc-yUw" id="eZN-3c-TFu">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="102.5"/>
@@ -113,6 +118,13 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateLabel" destination="eOy-PK-qEG" id="tyW-Ix-Gqy"/>
+                                    <outlet property="descriptionTextView" destination="QGE-nt-yn8" id="WeO-M2-NTE"/>
+                                    <outlet property="genericSubjectLabel" destination="7OU-9U-ni3" id="jjQ-Wf-Chp"/>
+                                    <outlet property="profileImageView" destination="ie2-JF-4na" id="Imu-CO-QFb"/>
+                                    <outlet property="subcategorySubjectLabel" destination="vHh-Cw-fyv" id="j8L-Ad-OeO"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
@@ -124,10 +136,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="postTableView" destination="K0o-jC-R7y" id="v0I-0u-2eG"/>
+                        <outlet property="searchBar" destination="3IY-8g-UfK" id="h1i-Eg-kpK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QmS-Gi-eLh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2224.8000000000002" y="-431.33433283358323"/>
+            <point key="canvasLocation" x="1730" y="-460"/>
         </scene>
         <!--Title-->
         <scene sceneID="vEZ-3y-wkh">
@@ -164,7 +180,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BbC-gL-xsf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3220" y="-409"/>
+            <point key="canvasLocation" x="2643" y="-165"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="RV6-iH-CSZ">
@@ -203,7 +219,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sIQ-Jd-ct6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1329.5999999999999" y="-430.88455772113946"/>
+            <point key="canvasLocation" x="815" y="-460"/>
         </scene>
         <!--Create a StudyMeet-->
         <scene sceneID="itZ-XN-vLt">
@@ -336,6 +352,7 @@
                         <outlet property="placeNameLabel" destination="GPE-d4-8xH" id="ufS-oH-csr"/>
                         <outlet property="postDescriptionTextView" destination="ocx-jJ-3O9" id="air-d1-V3l"/>
                         <outlet property="subjectSubcategoryTextField" destination="s5l-zR-Skz" id="noU-Fp-Pkv"/>
+                        <segue destination="6Ss-wZ-xB6" kind="show" identifier="toPosts" id="ZcM-rq-hBM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BqL-On-Ajz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -355,10 +372,13 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3220" y="-1107"/>
+            <point key="canvasLocation" x="2643" y="-948"/>
         </scene>
     </scenes>
     <resources>
         <image name="createPost" width="26" height="26"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="KsI-uW-dFS"/>
+    </inferredMetricsTieBreakers>
 </document>

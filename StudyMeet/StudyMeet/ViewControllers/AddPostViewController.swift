@@ -84,7 +84,7 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
             !genericSubject.isEmpty && !subcategorySubject.isEmpty && !postDescription.isEmpty && !date.isEmpty && !address.isEmpty
             else { missingFieldsAlert(); return }
         
-        PostController.shared.newPost(with: date, postDescription: postDescription, postTitle: subcategorySubject, schoolName: student.schoolName, creatorUid: student.identifier, studySubject: genericSubject, members:[student.identifier]) { (success) in
+        PostController.shared.newPost(with: date, postDescription: postDescription, postTitle: subcategorySubject, schoolName: student.schoolName, creatorUid: student.identifier, studySubject: genericSubject, subcategorySubject: subcategorySubject, members:[student.identifier]) { (success) in
             if success {
                 self.successAlert()
             } else {
@@ -102,9 +102,9 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
     }
     
     func successAlert(){
-        let alert = UIAlertController(title: "Account setup successful!", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Post succefully created!", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action:UIAlertAction) in
-            alert.dismiss(animated: true, completion: nil)
+            self.performSegue(withIdentifier: "toPosts", sender: action)
         }))
         self.present(alert, animated: true, completion: nil)
     }

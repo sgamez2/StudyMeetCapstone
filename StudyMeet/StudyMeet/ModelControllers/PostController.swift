@@ -12,14 +12,23 @@ import FirebaseDatabase
 class PostController {
     
     static let shared = PostController()
-    static var posts = [Post]()
+    var posts = [Post]()
     let postRef = Database.database().reference()
     
-    func newPost(with date: String, postDescription: String, postTitle: String, schoolName: String, creatorUid: String, studySubject: String, members: [String] , completion: @escaping (_ success: Bool) -> Void) {
+    func newPost(with date: String, postDescription: String, postTitle: String, schoolName: String, creatorUid: String, studySubject: String, subcategorySubject: String, members: [String] , completion: @escaping (_ success: Bool) -> Void) {
         
-        let post = Post(date: date, postDescription: postDescription, postTitle: postTitle, creatorUid: creatorUid, schoolName: schoolName, studySubject: studySubject, members: members)
+        let post = Post(date: date, postDescription: postDescription, postTitle: postTitle, creatorUid: creatorUid, schoolName: schoolName, studySubject: studySubject, subcategorySubject: subcategorySubject, members: members)
         guard let currentUser = StudentController.shared.currentStudent else { return }
         postRef.child("Posts").child(currentUser.identifier).setValue(post.dictionaryRepresentaion)
         completion(true)
+    }
+    
+    func fetchPosts(by genSubject: String) {
+        guard let currentStudent = StudentController.shared.currentStudent else { return }
+            self.postRef.child("Posts").observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let postsDictionary = snapshot.value as? [String:Any],
+            let post = Post(postsDictionary: postsDictionary) else {return}
+            self.posts.append(post)
+            })
     }
 }
