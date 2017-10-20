@@ -89,7 +89,6 @@ class Student {
         phoneNumberKey: phoneNumber,
         schoolNameKey: schoolName,
         userNameKey: userName,
-//        profilePicKey: profilePic,
         profilePicURLKey: profilePicURL,
         uuidKey: identifier
         ]

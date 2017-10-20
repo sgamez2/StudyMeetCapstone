@@ -32,8 +32,8 @@ class StudentController {
                 let student = Student(firstName: firstName, lastName: lastName, bio: bio, email: email, password: password, phoneNumber: phoneNumber, schoolName: schoolName, userName: schoolName, profilePic: profilePic, identifier: authenticatedUser.uid)
                 
                 // save image
-                self.saveImageToFIRStorage(profileImage: profilePic)
                 self.currentStudent = student
+                self.saveImageToFIRStorage(profileImage: profilePic)
 //                self.baseRef.child("Students").child(student.identifier).setValue(student.dictionaryRepresention)
                 completion(true)
             }
@@ -64,11 +64,12 @@ class StudentController {
     
     func saveImageToFIRStorage(profileImage: UIImage) { 
         
-        guard let currentStudent = self.currentStudent else { return }
+        guard let currentStudent = self.currentStudent
+            else { return }
 //        storageRef.child(currentStudent.identifier)
-        if let uploadData = UIImagePNGRepresentation(currentStudent.profilePic) {
+        if let uploadData = UIImageJPEGRepresentation(currentStudent.profilePic, 1.0) {
             
-            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+            storageRef.child(currentStudent.identifier).putData(uploadData, metadata: nil, completion: { (metadata, error) in
                 if let error = error {
                     print(error.localizedDescription)
                     return
