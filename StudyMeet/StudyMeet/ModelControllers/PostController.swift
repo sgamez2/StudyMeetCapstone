@@ -24,11 +24,14 @@ class PostController {
     }
     
     func fetchPosts(by genSubject: String) {
-        guard let currentStudent = StudentController.shared.currentStudent else { return }
+//        guard let currentStudent = StudentController.shared.currentStudent else { return }
             self.postRef.child("Posts").observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let postsDictionary = snapshot.value as? [String:Any],
-            let post = Post(postsDictionary: postsDictionary) else {return}
-            self.posts.append(post)
+                if let postsDictionary = snapshot.value as? [String:Any] {
+                    for post in postsDictionary {
+                        
+//                        self.posts.append(post)
+                    }
+                }
             })
     }
 }

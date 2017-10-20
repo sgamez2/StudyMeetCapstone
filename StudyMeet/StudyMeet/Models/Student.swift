@@ -6,7 +6,7 @@
 //  Copyright © 2017 Sergio Gamez. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Student {
     
@@ -19,6 +19,8 @@ class Student {
     private let phoneNumberKey = "phoneNumber"
     private let schoolNameKey = "schoolName"
     private let userNameKey = "userName"
+    private let profilePicKey = "profilePic"
+    private let profilePicURLKey = "profilePicURL"
     private let uuidKey = "uuid"
     
     // MARK: - Properties
@@ -30,10 +32,12 @@ class Student {
     let phoneNumber: String
     let schoolName: String
     let userName: String
+    var profilePic: UIImage
+    var profilePicURL: String
     let identifier: String
     
     // Memberwise INIT
-    init(firstName: String, lastName: String, bio: String, email: String, password: String, phoneNumber: String, schoolName: String, userName: String, identifier: String) {
+    init(firstName: String, lastName: String, bio: String, email: String, password: String, phoneNumber: String, schoolName: String, userName: String, profilePic: UIImage, profilePicURL: String = "", identifier: String) {
         
         self.firstName = firstName
         self.lastName = lastName
@@ -43,6 +47,8 @@ class Student {
         self.phoneNumber = phoneNumber
         self.schoolName = schoolName
         self.userName = userName
+        self.profilePic = profilePic
+        self.profilePicURL = profilePicURL
         self.identifier = identifier
     }
     
@@ -56,6 +62,8 @@ class Student {
         let phoneNumber = userDictionary[phoneNumberKey] as? String,
         let schoolName = userDictionary[schoolNameKey] as? String,
         let userName = userDictionary[userNameKey] as? String,
+        let profilePic = userDictionary[profilePicKey] as? UIImage,
+        let profilePicURL = userDictionary[profilePicURLKey] as? String,
         let uuid = userDictionary[uuidKey] as? String else {return nil}
         
         self.firstName = firstName
@@ -66,6 +74,8 @@ class Student {
         self.phoneNumber = phoneNumber
         self.schoolName = schoolName
         self.userName = userName
+        self.profilePic = profilePic
+        self.profilePicURL = profilePicURL
         self.identifier = uuid
     }
     
@@ -79,6 +89,8 @@ class Student {
         phoneNumberKey: phoneNumber,
         schoolNameKey: schoolName,
         userNameKey: userName,
+//        profilePicKey: profilePic,
+        profilePicURLKey: profilePicURL,
         uuidKey: identifier
         ]
         return dictionary

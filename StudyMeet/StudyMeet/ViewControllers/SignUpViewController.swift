@@ -88,11 +88,11 @@ class SignUpViewController: UIViewController {
             let schoolName = schoolNameTextField.text,
             let phoneNumber = phoneNumberTextField.text,
             let username = usernameTextField.text,
+            let profilePic = profileImage.image,
             !firstName.isEmpty && !lastName.isEmpty && !username.isEmpty && !bio.isEmpty && !email.isEmpty
                 && !schoolName.isEmpty else { errorAlert(); return }
         
-        
-        StudentController.shared.newStudentWith(firstName: firstName, lastName: lastName, bio: bio, email: email, password: password, phoneNumber: phoneNumber, schoolName: schoolName, userName: username, completion: { (success) in
+        StudentController.shared.newStudentWith(firstName: firstName, lastName: lastName, bio: bio, email: email, password: password, phoneNumber: phoneNumber, schoolName: schoolName, userName: username, profilePic: profilePic, completion: { (success) in
             if success {
                 self.successAlert()
             } else {
@@ -126,7 +126,7 @@ extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationCon
         if let editedimage = info[UIImagePickerControllerEditedImage] as? UIImage {
             profileImage.image = editedimage
         } else {
-            let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+            let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage
             profileImage.image = originalImage
         }
         picker.dismiss(animated: true, completion: nil)

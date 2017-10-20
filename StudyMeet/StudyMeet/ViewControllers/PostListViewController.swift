@@ -19,7 +19,6 @@ class PostListViewController: UIViewController, UITableViewDelegate, UITableView
     }
    
     // MARK: - Helper Methods
-    
     // Search Bar
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchSubject = searchBar.text else {return}
