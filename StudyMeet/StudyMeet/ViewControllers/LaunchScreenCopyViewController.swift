@@ -26,9 +26,14 @@ class LaunchScreenCopyViewController: UIViewController {
             guard let currentUser = Auth.auth().currentUser else {return }
             let uid = currentUser.uid
             StudentController.shared.fetchCurrentStudentFromFIR(uid, completion: { (success) in
-                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-                guard let mainTabBarVC = storyBoard.instantiateViewController(withIdentifier: "tabBarController") as? UITabBarController else {return}
-                self.present(mainTabBarVC, animated: true, completion: nil)
+                if success {
+                    let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                    guard let mainTabBarVC = storyBoard.instantiateViewController(withIdentifier: "tabBarController") as? UITabBarController else {return}
+                    self.present(mainTabBarVC, animated: true, completion: nil)
+                } else {
+                    // FIXME
+                    // Add Log out here
+                }
             })
         } else {
             let storyBoard = UIStoryboard(name: "LoginScreen", bundle: nil)

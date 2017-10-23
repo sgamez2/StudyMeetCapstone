@@ -13,6 +13,7 @@ class PostController {
     
     static let shared = PostController()
     var posts = [Post]()
+    var studentsPosts = [Post]()
     var studentPosts = [Post]()
     let postRef = Database.database().reference()
     
@@ -26,8 +27,8 @@ class PostController {
  
     func fetchStudentPosts(completion: @escaping() -> Void) {
         var fetchedStudentPosts: [Post] = []
-        guard let currentUser = StudentController.shared.currentStudent else { return }
-        self.postRef.child("Posts").child(currentUser.identifier).observeSingleEvent(of: .value, with: { (snapshot) in
+        guard let currentStudent = StudentController.shared.currentStudent else { return }
+        self.postRef.child("Posts").child(currentStudent.identifier).observeSingleEvent(of: .value, with: { (snapshot) in
             if let postsDictionary = snapshot.value as? [String:Any] {
                 for postDictionary in postsDictionary {
                     guard let postDictionaryValue = postDictionary.value as? [String:Any],
@@ -35,7 +36,7 @@ class PostController {
                         else { completion(); return }
                     fetchedStudentPosts.append(post)
                 }
-                self.posts = fetchedStudentPosts
+                self.studentPosts = fetchedStudentPosts
                 completion()
             }
         })
@@ -51,7 +52,7 @@ class PostController {
                         else { completion(); return }
                     fetchedPosts.append(post)
                 }
-                self.studentPosts = fetchedPosts
+                self.studentsPosts = fetchedPosts
                 completion()
             }
         })

@@ -9,7 +9,7 @@
 import UIKit
 
 class ProfileTabViewController: UIViewController {
-
+    
     @IBOutlet weak var profilePicImageView: UIImageView!
     @IBOutlet weak var studentName: UILabel!
     @IBOutlet weak var studentSchoolName: UILabel!
@@ -19,14 +19,17 @@ class ProfileTabViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
-        
         PostController.shared.fetchStudentPosts {
             DispatchQueue.main.async {
                 self.studentPostsTableView.reloadData()
             }
         }
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     func updateViews() {
         if let student = StudentController.shared.currentStudent {
             studentName.text = "\(student.firstName) \(student.lastName)"
@@ -35,30 +38,34 @@ class ProfileTabViewController: UIViewController {
             profilePicImageView.image = student.profilePic
             profilePicImageView.layer.cornerRadius = profilePicImageView.frame.height / 2
             profilePicImageView.layer.masksToBounds = true
-            
-        } else{
+        } else {
             print("Student did not set")
         }
     }
 }
 
 extension ProfileTabViewController: UITableViewDelegate, UITableViewDataSource {
-   
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return profilePicImageView.frame.height * 0.5
+        return 60.0
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return PostController.shared.studentPosts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = self.studentPostsTableView.dequeueReusableCell(withIdentifier: "studentPosts", for: indexPath) as? StudyPostTableViewCell else {return UITableViewCell()}
+        guard let cell = self.studentPostsTableView.dequeueReusableCell(withIdentifier: "studentPostsCell", for: indexPath) as? StudentPostTableViewCell else {return UITableViewCell()}
         
         let post = PostController.shared.studentPosts[indexPath.row]
-        cell.updateViews(post: post)
+        
+        if let student = StudentController.shared.currentStudent {
+            cell.updateViews(post, student)
+        } else {
+            print("Could not set student in PostListVC")
+        }
         return cell
     }
- 
 }
 
 

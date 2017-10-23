@@ -53,7 +53,7 @@ class Student {
     }
     
     // Failable INIT
-    init?(userDictionary: [String:Any]) {
+    init?(userDictionary: [String:Any], image: UIImage) {
         guard let firstName = userDictionary[firstNameKey] as? String,
         let lastName = userDictionary[lastNameKey] as? String,
         let bio = userDictionary[bioKey] as? String,
@@ -62,10 +62,12 @@ class Student {
         let phoneNumber = userDictionary[phoneNumberKey] as? String,
         let schoolName = userDictionary[schoolNameKey] as? String,
         let userName = userDictionary[userNameKey] as? String,
-        let profilePic = userDictionary[profilePicKey] as? UIImage,
         let profilePicURL = userDictionary[profilePicURLKey] as? String,
-        let uuid = userDictionary[uuidKey] as? String else {return nil}
+        let uuid = userDictionary[uuidKey] as? String
+            else { print("Error in failable init of Student"); return nil}
         
+        
+        self.profilePic = image
         self.firstName = firstName
         self.lastName = lastName
         self.bio = bio
@@ -74,7 +76,6 @@ class Student {
         self.phoneNumber = phoneNumber
         self.schoolName = schoolName
         self.userName = userName
-        self.profilePic = profilePic
         self.profilePicURL = profilePicURL
         self.identifier = uuid
     }

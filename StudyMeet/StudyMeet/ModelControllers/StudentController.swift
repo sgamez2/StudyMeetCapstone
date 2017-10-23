@@ -41,10 +41,28 @@ class StudentController {
     
     func fetchCurrentStudentFromFIR(_ uid: String, completion: @escaping (Bool) -> Void) {
         baseRef.child("Students").child(uid).observeSingleEvent(of: .value) { (snapshot) in
-          guard let studentDictionary = snapshot.value as? [String:Any],
-            let student = Student(userDictionary: studentDictionary) else {completion(false);return}
-            self.currentStudent = student
+            guard let studentDictionary = snapshot.value as? [String:Any],
+                let studentProfilePicURL = studentDictionary["profilePicURL"] as? String
+                else { print("Trouble getting current student."); completion(false); return }
+            
+            self.fetchImageFromFIRStorage(profilePicURL: studentProfilePicURL, completion: { (image) in
+                if let image = image {
+                    let student = Student(userDictionary: studentDictionary, image: image)
+                    self.currentStudent = student
+                    completion(true)
+                }
+            })
+        }
+    }
+    
+    func logoutStudent(_ completion: @escaping (Bool) -> Void) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
             completion(true)
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+            completion(false)
         }
     }
     
@@ -62,14 +80,17 @@ class StudentController {
                 guard let authUser = authUser else {completion(false); return }
                 self.baseRef.child("Students").child(authUser.uid).observeSingleEvent(of: .value) { (snapshot) in
                     guard let studentDictionary = snapshot.value as? [String:Any],
-                        let student = Student(userDictionary: studentDictionary)
+                        let studentProfilePicURL = studentDictionary["profilePicURL"] as? String
                         else {completion(false); return}
                     
-                    guard let fetchedImage = self.fetchImageFromFIRStorage(profilePicURL: student.profilePicURL) else {completion(false); return}
-                    student.profilePic = fetchedImage
-                    self.currentStudent = student
-                    completion(true)
-                    print("success")
+                    self.fetchImageFromFIRStorage(profilePicURL: studentProfilePicURL, completion: { (image) in
+                        if let image = image {
+                            let student = Student(userDictionary: studentDictionary, image: image)
+                            self.currentStudent = student
+                            completion(true)
+                            print("success")
+                        }
+                    })
                 }
             }
         }
@@ -110,22 +131,19 @@ class StudentController {
 //        }
 //    }
     
-    func fetchImageFromFIRStorage(profilePicURL: String) -> UIImage? {
+    func fetchImageFromFIRStorage(profilePicURL: String, completion: @escaping(UIImage?) -> Void){
         
-        var imageToReturn: UIImage?
-        
-        Storage.storage().reference(forURL: profilePicURL).getData(maxSize: 5 * 1024 * 1024) { (data, error) in
+        Storage.storage().reference(forURL: profilePicURL).getData(maxSize: 6 * 1024 * 1024) { (data, error) in
             if let error = error {
                 print(error.localizedDescription)
-                imageToReturn = nil
+                completion(nil)
                 return
             } else {
                 guard let data = data else {return}
                 let image = UIImage(data: data)
-                imageToReturn = image
+                completion(image)
             }
         }
-        return imageToReturn
     }
 }
 
