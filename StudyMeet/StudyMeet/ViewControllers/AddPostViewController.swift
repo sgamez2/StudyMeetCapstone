@@ -33,6 +33,8 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
         meetAddressTextView.layer.cornerRadius = 10
         dateTextField.inputView = datePicker
         subjectPicker()
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -104,7 +106,7 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
     func successAlert(){
         let alert = UIAlertController(title: "Post succefully created!", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action:UIAlertAction) in
-            self.performSegue(withIdentifier: "toPosts", sender: action)
+            self.navigationController?.popViewController(animated: true)
         }))
         self.present(alert, animated: true, completion: nil)
     }
@@ -158,6 +160,5 @@ extension AddPostViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         genericSubjectTextField.text = HelperMethods.shared.genericSubjectsArray[row]
-        
     }
 }

@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -75,13 +75,21 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QMB-6I-opS">
                                         <rect key="frame" x="0.0" y="274" width="375" height="324"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="studentPosts" id="Jxq-0f-LQm">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jxq-0f-LQm" id="nTs-xm-oHl">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="xE6-qC-xX3" id="xPt-Wd-pQ5"/>
+                                            <outlet property="delegate" destination="xE6-qC-xX3" id="cR5-7m-XM8"/>
+                                        </connections>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lij-ef-U5D">
-                                        <rect key="frame" x="174" y="89" width="66" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <state key="normal" title="Edit Profile"/>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -121,7 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WOy-ch-wIR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-148" y="1244.527736131934"/>
+            <point key="canvasLocation" x="-660" y="1244.527736131934"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ODX-XP-ocZ">
@@ -153,11 +161,11 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="studyPostCell" rowHeight="103" id="qzd-zc-yUw" customClass="StudyPostTableViewCell" customModule="StudyMeet" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="375" height="103"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="studyPostCell" rowHeight="109" id="qzd-zc-yUw" customClass="StudyPostTableViewCell" customModule="StudyMeet" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="375" height="109"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qzd-zc-yUw" id="eZN-3c-TFu">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="102.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="108.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ie2-JF-4na">
@@ -204,6 +212,10 @@
                                 </connections>
                             </tableViewCell>
                         </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="6Ss-wZ-xB6" id="T8S-iF-Mhi"/>
+                            <outlet property="delegate" destination="6Ss-wZ-xB6" id="ELQ-To-AE0"/>
+                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Study Meets" id="XYu-mr-CBC">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="dHe-oY-jW4"/>
@@ -220,7 +232,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QmS-Gi-eLh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1730" y="-460"/>
+            <point key="canvasLocation" x="1728.8" y="-460.11994002998506"/>
         </scene>
         <!--Title-->
         <scene sceneID="vEZ-3y-wkh">
@@ -262,7 +274,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="RV6-iH-CSZ">
             <objects>
-                <tabBarController id="6gq-PA-hyP" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarController" id="6gq-PA-hyP" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HYA-Hr-HqX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -429,7 +441,6 @@
                         <outlet property="placeNameLabel" destination="GPE-d4-8xH" id="ufS-oH-csr"/>
                         <outlet property="postDescriptionTextView" destination="ocx-jJ-3O9" id="air-d1-V3l"/>
                         <outlet property="subjectSubcategoryTextField" destination="s5l-zR-Skz" id="noU-Fp-Pkv"/>
-                        <segue destination="6Ss-wZ-xB6" kind="show" identifier="toPosts" id="ZcM-rq-hBM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BqL-On-Ajz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -455,7 +466,4 @@
     <resources>
         <image name="createPost" width="26" height="26"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="KsI-uW-dFS"/>
-    </inferredMetricsTieBreakers>
 </document>

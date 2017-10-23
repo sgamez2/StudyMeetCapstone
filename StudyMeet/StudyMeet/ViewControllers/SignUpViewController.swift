@@ -36,12 +36,13 @@ class SignUpViewController: UIViewController {
         bioDescriptionTextView.layer.cornerRadius = 15
         bioDescriptionTextView.layer.borderColor = UIColor.lightGray.cgColor
         bioDescriptionTextView.layer.borderWidth = 0.4
+        profileImage.layer.cornerRadius = profileImage.frame.size.height / 2
+        profileImage.layer.masksToBounds = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        profileImage.layer.cornerRadius = profileImage.frame.size.height / 2
-        profileImage.layer.masksToBounds = true
+        
     }
     
     // MARK: - IBActions

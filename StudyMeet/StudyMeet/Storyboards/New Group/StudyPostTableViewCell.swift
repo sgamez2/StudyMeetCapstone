@@ -10,12 +10,13 @@ import UIKit
 
 class StudyPostTableViewCell: UITableViewCell {
 
-    // MARK: - 
+    // MARK: - IBOutlets
     @IBOutlet weak var profileImageView: UIView!
     @IBOutlet weak var subcategorySubjectLabel: UILabel!
     @IBOutlet weak var genericSubjectLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
+    
     
     func updateViews(post: Post) {
         subcategorySubjectLabel.text = post.subcategorySubject

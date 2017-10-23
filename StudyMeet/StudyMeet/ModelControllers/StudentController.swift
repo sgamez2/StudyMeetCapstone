@@ -34,10 +34,23 @@ class StudentController {
                 // save image
                 self.currentStudent = student
                 self.saveImageToFIRStorage(profileImage: profilePic)
-//                self.baseRef.child("Students").child(student.identifier).setValue(student.dictionaryRepresention)
                 completion(true)
             }
         }
+    }
+    
+    func fetchCurrentStudentFromFIR(_ uid: String, completion: @escaping (Bool) -> Void) {
+        baseRef.child("Students").child(uid).observeSingleEvent(of: .value) { (snapshot) in
+          guard let studentDictionary = snapshot.value as? [String:Any],
+            let student = Student(userDictionary: studentDictionary) else {completion(false);return}
+            self.currentStudent = student
+            completion(true)
+        }
+    }
+    
+    func updateStudent(student: Student, firstName: String, lastName: String,
+                       bio: String, phoneNumber: String, schoolName: String, userName: String, profilePic: UIImage) {
+        
     }
     
     func loginStudent(email: String, password: String, completion: @escaping(_ success: Bool) -> Void) {
@@ -62,11 +75,10 @@ class StudentController {
         }
     }
     
-    func saveImageToFIRStorage(profileImage: UIImage) { 
+    func saveImageToFIRStorage(profileImage: UIImage) {
         
         guard let currentStudent = self.currentStudent
             else { return }
-//        storageRef.child(currentStudent.identifier)
         if let uploadData = UIImageJPEGRepresentation(currentStudent.profilePic, 1.0) {
             
             storageRef.child(currentStudent.identifier).putData(uploadData, metadata: nil, completion: { (metadata, error) in

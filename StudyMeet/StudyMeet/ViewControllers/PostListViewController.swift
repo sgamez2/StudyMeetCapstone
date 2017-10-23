@@ -10,20 +10,29 @@ import UIKit
 
 class PostListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
   
+    // MARK: -  @IBOutlets
     @IBOutlet var postTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.postTableView.reloadData()
+        
+        searchBar.delegate = self
     }
    
     // MARK: - Helper Methods
     // Search Bar
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.postTableView.rowHeight = 60.0
         guard let searchSubject = searchBar.text else {return}
-        PostController.shared.fetchPosts(by: searchSubject)
+        PostController.shared.fetchPosts(by: searchSubject) {
+            DispatchQueue.main.async {
+                self.postTableView.reloadData()
+            }
+        }
     }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return PostController.shared.posts.count
@@ -49,3 +58,4 @@ class PostListViewController: UIViewController, UITableViewDelegate, UITableView
     */
 
 }
+

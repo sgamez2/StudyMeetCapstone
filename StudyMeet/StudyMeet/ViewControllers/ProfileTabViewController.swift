@@ -15,15 +15,15 @@ class ProfileTabViewController: UIViewController {
     @IBOutlet weak var studentSchoolName: UILabel!
     @IBOutlet weak var studentBio: UITextView!
     @IBOutlet weak var studentPostsTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    var student: Student? {
-        didSet {
-            updateViews()
+        updateViews()
+        
+        PostController.shared.fetchStudentPosts {
+            DispatchQueue.main.async {
+                self.studentPostsTableView.reloadData()
+            }
         }
     }
 
@@ -33,20 +33,37 @@ class ProfileTabViewController: UIViewController {
             studentSchoolName.text = student.schoolName
             studentBio.text = student.bio
             profilePicImageView.image = student.profilePic
+            profilePicImageView.layer.cornerRadius = profilePicImageView.frame.height / 2
+            profilePicImageView.layer.masksToBounds = true
+            
         } else{
             print("Student did not set")
         }
-        
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+extension ProfileTabViewController: UITableViewDelegate, UITableViewDataSource {
+   
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return profilePicImageView.frame.height * 0.5
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return PostController.shared.studentPosts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = self.studentPostsTableView.dequeueReusableCell(withIdentifier: "studentPosts", for: indexPath) as? StudyPostTableViewCell else {return UITableViewCell()}
+        
+        let post = PostController.shared.studentPosts[indexPath.row]
+        cell.updateViews(post: post)
+        return cell
+    }
+ 
+}
+
+
+
+
+
+
+
