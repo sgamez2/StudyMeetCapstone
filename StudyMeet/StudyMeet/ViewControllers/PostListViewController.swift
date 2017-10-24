@@ -36,13 +36,13 @@ class PostListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return PostController.shared.posts.count
+        return PostController.shared.allPosts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = self.postTableView.dequeueReusableCell(withIdentifier: "studyPostCell", for: indexPath) as? StudyPostTableViewCell else {return UITableViewCell()}
         
-        let post = PostController.shared.posts[indexPath.row]
+        let post = PostController.shared.allPosts[indexPath.row]
         
         if let student = StudentController.shared.currentStudent {
             cell.updateViews(post, student)

@@ -20,9 +20,7 @@ class ProfileTabViewController: UIViewController {
         super.viewDidLoad()
         updateViews()
         PostController.shared.fetchStudentPosts {
-            DispatchQueue.main.async {
-                self.studentPostsTableView.reloadData()
-            }
+            self.studentPostsTableView.reloadData()
         }
     }
     
