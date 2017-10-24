@@ -24,7 +24,6 @@ class PostListViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: - Helper Methods
     // Search Bar
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.postTableView.rowHeight = 60.0
         guard let searchSubject = searchBar.text else {return}
         PostController.shared.fetchPosts(by: searchSubject) {
             DispatchQueue.main.async {
@@ -37,6 +36,10 @@ class PostListViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return PostController.shared.allPosts.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120.0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

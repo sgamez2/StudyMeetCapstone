@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class StudyPostTableViewCell: UITableViewCell {
 
@@ -18,15 +19,23 @@ class StudyPostTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionTextView: UITextView!
     
     
+    
+    
     func updateViews(_ post: Post, _ student: Student) {
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
         profileImageView.layer.masksToBounds = true
         
-        profileImageView.image = student.profilePic
+        StudentController.shared.fetchImageFromFIRStorage(post.creatorUid) { (image) in
+            
+            self.profileImageView.image = image
+        }
+        
         subcategorySubjectLabel.text = post.subcategorySubject
         genericSubjectLabel.text = post.studySubject
         dateLabel.text = post.date
         descriptionTextView.text = post.postDescription
     }
+    
+    
     
 }

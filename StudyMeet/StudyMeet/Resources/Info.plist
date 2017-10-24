@@ -20,6 +20,16 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>We need to access your Camera to be able to set a profile picture.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Show your location on the map.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need to access your Photo Library to be able to set a profile picture.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Rainbow Bridge Personal Use</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -41,8 +51,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
@@ -51,15 +59,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Rainbow Bridge Personal Use</string>
-	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>We need to access your Camera to be able to set a profile picture.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>We need to access your Photo Library to be able to set a profile picture.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Show your location on the map.</string>
 </dict>
 </plist>

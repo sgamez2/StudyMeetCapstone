@@ -18,7 +18,6 @@ class Student {
     private let passwordKey = "password"
     private let phoneNumberKey = "phoneNumber"
     private let schoolNameKey = "schoolName"
-    private let userNameKey = "userName"
     private let profilePicKey = "profilePic"
     private let profilePicURLKey = "profilePicURL"
     private let uuidKey = "uuid"
@@ -31,13 +30,12 @@ class Student {
     let password: String
     let phoneNumber: String
     let schoolName: String
-    let userName: String
     var profilePic: UIImage
     var profilePicURL: String
     let identifier: String
     
     // Memberwise INIT
-    init(firstName: String, lastName: String, bio: String, email: String, password: String, phoneNumber: String, schoolName: String, userName: String, profilePic: UIImage, profilePicURL: String = "", identifier: String) {
+    init(firstName: String, lastName: String, bio: String, email: String, password: String, phoneNumber: String, schoolName: String, profilePic: UIImage, profilePicURL: String = "", identifier: String) {
         
         self.firstName = firstName
         self.lastName = lastName
@@ -46,7 +44,6 @@ class Student {
         self.password = password
         self.phoneNumber = phoneNumber
         self.schoolName = schoolName
-        self.userName = userName
         self.profilePic = profilePic
         self.profilePicURL = profilePicURL
         self.identifier = identifier
@@ -61,7 +58,6 @@ class Student {
         let password = userDictionary[passwordKey] as? String,
         let phoneNumber = userDictionary[phoneNumberKey] as? String,
         let schoolName = userDictionary[schoolNameKey] as? String,
-        let userName = userDictionary[userNameKey] as? String,
         let profilePicURL = userDictionary[profilePicURLKey] as? String,
         let uuid = userDictionary[uuidKey] as? String
             else { print("Error in failable init of Student"); return nil}
@@ -75,7 +71,6 @@ class Student {
         self.password = password
         self.phoneNumber = phoneNumber
         self.schoolName = schoolName
-        self.userName = userName
         self.profilePicURL = profilePicURL
         self.identifier = uuid
     }
@@ -89,7 +84,6 @@ class Student {
         passwordKey: password,
         phoneNumberKey: phoneNumber,
         schoolNameKey: schoolName,
-        userNameKey: userName,
         profilePicURLKey: profilePicURL,
         uuidKey: identifier
         ]

@@ -16,7 +16,6 @@ class SignUpViewController: UIViewController {
     
     // MARK: - IBOutlets
     @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var bioDescriptionTextView: UITextView!
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -88,12 +87,11 @@ class SignUpViewController: UIViewController {
             let password = passwordTextField.text,
             let schoolName = schoolNameTextField.text,
             let phoneNumber = phoneNumberTextField.text,
-            let username = usernameTextField.text,
             let profilePic = profileImage.image,
-            !firstName.isEmpty && !lastName.isEmpty && !username.isEmpty && !bio.isEmpty && !email.isEmpty
+            !firstName.isEmpty && !lastName.isEmpty && !bio.isEmpty && !email.isEmpty
                 && !schoolName.isEmpty else { errorAlert(); return }
         
-        StudentController.shared.newStudentWith(firstName: firstName, lastName: lastName, bio: bio, email: email, password: password, phoneNumber: phoneNumber, schoolName: schoolName, userName: username, profilePic: profilePic, completion: { (success) in
+        StudentController.shared.newStudentWith(firstName: firstName, lastName: lastName, bio: bio, email: email, password: password, phoneNumber: phoneNumber, schoolName: schoolName, profilePic: profilePic, completion: { (success) in
             if success {
                 self.successAlert()
             } else {
@@ -143,12 +141,12 @@ extension SignUpViewController: UITextFieldDelegate, UITextViewDelegate {
     
     // Start Editing The Text Field
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        moveTextField(textField, moveDistance: -200, up: true)
+        moveTextField(textField, moveDistance: -70, up: true)
     }
     
     // Finish Editing The Text Field
     func textFieldDidEndEditing(_ textField: UITextField) {
-        moveTextField(textField, moveDistance: -200, up: false)
+        moveTextField(textField, moveDistance: -70, up: false)
     }
     
     // Hide the keyboard when the return key pressed

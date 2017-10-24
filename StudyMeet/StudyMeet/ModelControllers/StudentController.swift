@@ -20,7 +20,7 @@ class StudentController {
     var currentStudent: Student?
     
     func newStudentWith(firstName: String, lastName: String,
-                        bio: String, email: String, password: String, phoneNumber: String, schoolName: String, userName: String, profilePic: UIImage,
+                        bio: String, email: String, password: String, phoneNumber: String, schoolName: String, profilePic: UIImage,
                         completion: @escaping (_ success: Bool) -> Void) {
         
         Auth.auth().createUser(withEmail: email, password: password) { (authenticatedUser, error) in
@@ -29,7 +29,7 @@ class StudentController {
             } else {
                 guard let authenticatedUser = authenticatedUser else  {return}
                 
-                let student = Student(firstName: firstName, lastName: lastName, bio: bio, email: email, password: password, phoneNumber: phoneNumber, schoolName: schoolName, userName: schoolName, profilePic: profilePic, identifier: authenticatedUser.uid)
+                let student = Student(firstName: firstName, lastName: lastName, bio: bio, email: email, password: password, phoneNumber: phoneNumber, schoolName: schoolName, profilePic: profilePic, identifier: authenticatedUser.uid)
                 
                 // save image
                 self.currentStudent = student
@@ -67,7 +67,7 @@ class StudentController {
     }
     
     func updateStudent(student: Student, firstName: String, lastName: String,
-                       bio: String, phoneNumber: String, schoolName: String, userName: String, profilePic: UIImage) {
+                       bio: String, phoneNumber: String, schoolName: String, profilePic: UIImage) {
         
     }
     
@@ -115,10 +115,10 @@ class StudentController {
         }
     }
     
-//    func fetchImageFromFIRStorage(profilePicURL: String) -> UIImage? {
-//
+    func fetchImageFromFIRStorage(_ studentUid: String, completion: @escaping(UIImage?) -> Void) {
+
 //        guard let currentStudent = self.currentStudent else {return nil}
-//
+
 //        Storage.storage().reference(forURL: profilePicURL).getData(maxSize: 5 * 1024 * 1024) { (data, error) in
 //            if let error = error {
 //                print(error.localizedDescription)
@@ -129,7 +129,20 @@ class StudentController {
 //                return image
 //            }
 //        }
-//    }
+        
+        Storage.storage().reference(withPath: studentUid).getData(maxSize: 6 * 1024 * 1024) { (data, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                completion(nil)
+                return
+            } else {
+                guard let data = data else {return}
+                let image = UIImage(data: data)
+                completion(image)
+            }
+        }
+    
+    }
     
     func fetchImageFromFIRStorage(profilePicURL: String, completion: @escaping(UIImage?) -> Void){
         

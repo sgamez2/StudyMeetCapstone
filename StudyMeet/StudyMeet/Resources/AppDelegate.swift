@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         GMSPlacesClient.provideAPIKey("AIzaSyDegURsAPgVPEOSZJl9F9nNXIoyh3_37nY")
         GMSServices.provideAPIKey("AIzaSyDegURsAPgVPEOSZJl9F9nNXIoyh3_37nY")
-        
+//        
 //        StudentController.shared.logoutStudent { (success) in
 //            print(success)
 //        }
