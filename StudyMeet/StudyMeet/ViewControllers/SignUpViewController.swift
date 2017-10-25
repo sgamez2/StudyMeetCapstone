@@ -90,7 +90,7 @@ class SignUpViewController: UIViewController {
             let profilePic = profileImage.image,
             !firstName.isEmpty && !lastName.isEmpty && !bio.isEmpty && !email.isEmpty
                 && !schoolName.isEmpty else { errorAlert(); return }
-        
+          
         StudentController.shared.newStudentWith(firstName: firstName, lastName: lastName, bio: bio, email: email, password: password, phoneNumber: phoneNumber, schoolName: schoolName, profilePic: profilePic, completion: { (success) in
             if success {
                 self.successAlert()

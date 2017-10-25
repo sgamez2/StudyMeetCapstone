@@ -19,6 +19,8 @@ class Post {
     private let creatorUidKey = "creatorUid"
     private let studySubjectKey = "studySubject"
     private let subcategorySubjectKey = "subcategorySubject"
+    private let addressNameKey = "adressName"
+    private let addressKey = "address"
     
     // Properties
     let date: String
@@ -28,9 +30,11 @@ class Post {
     let schoolName: String
     let studySubject: String
     let subcategorySubject: String
+    let addressName: String
+    let address: String
     var members: [String]
     
-    init(date: String, postDescription: String, postTitle: String, creatorUid: String, schoolName: String, studySubject: String, subcategorySubject: String, members: [String] = []){
+    init(date: String, postDescription: String, postTitle: String, creatorUid: String, schoolName: String, studySubject: String, subcategorySubject: String, addressName: String, address: String, members: [String] = []){
         self.date = date
         self.postDescription = postDescription
         self.postTitle = postTitle
@@ -38,6 +42,8 @@ class Post {
         self.schoolName = schoolName
         self.studySubject = studySubject
         self.subcategorySubject = subcategorySubject
+        self.addressName = addressName
+        self.address = address
         self.members = members
     }
     
@@ -49,6 +55,8 @@ class Post {
             let creatorUid = postsDictionary[creatorUidKey] as? String,
             let studySubject = postsDictionary[studySubjectKey] as? String,
             let subcategorySubject = postsDictionary[subcategorySubjectKey] as? String,
+            let addressName = postsDictionary[addressNameKey] as? String,
+            let address = postsDictionary[addressKey] as? String,
             let members = postsDictionary[membersKey] as? [String] else {return nil}
         
         self.date = date
@@ -57,6 +65,8 @@ class Post {
         self.schoolName = schoolName
         self.studySubject = studySubject
         self.subcategorySubject = subcategorySubject
+        self.addressName = addressName
+        self.address = address
         self.creatorUid = creatorUid
         self.members = members
     }
@@ -69,13 +79,11 @@ class Post {
             schoolNameKey: schoolName,
             studySubjectKey: studySubject,
             subcategorySubjectKey: subcategorySubject,
+            addressNameKey: addressName,
+            addressKey: address,
             creatorUidKey: creatorUid,
             membersKey: members
         ]
         return dictionary
-    }
-    
-    var jsonData: Data? {
-        return try? JSONSerialization.data(withJSONObject: dictionaryRepresentaion, options: .prettyPrinted)
     }
 }

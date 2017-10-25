@@ -82,11 +82,12 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
             let postDescription = postDescriptionTextView.text,
             let date = dateTextField.text,
             let address = meetAddressTextView.text,
+            let addressName = placeNameLabel.text,
             let student = StudentController.shared.currentStudent,
             !genericSubject.isEmpty && !subcategorySubject.isEmpty && !postDescription.isEmpty && !date.isEmpty && !address.isEmpty
             else { missingFieldsAlert(); return }
         
-        PostController.shared.newPost(with: date, postDescription: postDescription, postTitle: subcategorySubject, schoolName: student.schoolName, creatorUid: student.identifier, studySubject: genericSubject, subcategorySubject: subcategorySubject, members:[student.identifier]) { (success) in
+        PostController.shared.newPost(with: date, postDescription: postDescription, postTitle: subcategorySubject, schoolName: student.schoolName, creatorUid: student.identifier, studySubject: genericSubject, subcategorySubject: subcategorySubject, addressName: addressName, address: address, members:[student.identifier]) { (success) in
             if success {
                 self.successAlert()
             } else {

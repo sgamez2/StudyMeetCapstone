@@ -17,7 +17,7 @@ class PostListViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
+//        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         searchBar.delegate = self
     }
     
@@ -25,27 +25,28 @@ class PostListViewController: UIViewController, UITableViewDelegate, UITableView
     // Search Bar
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchSubject = searchBar.text else {return}
-        PostController.shared.fetchPosts(by: searchSubject) {
-            DispatchQueue.main.async {
-                self.postTableView.reloadData()
-            }
-        }
+
+//        PostController.shared.fetchPosts(by: searchSubject) {
+//            DispatchQueue.main.async {
+//                self.postTableView.reloadData()
+//            }
+//        }
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return PostController.shared.allPosts.count
+        return PostController.shared.joinedPosts.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120.0
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 120.0
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = self.postTableView.dequeueReusableCell(withIdentifier: "studyPostCell", for: indexPath) as? StudyPostTableViewCell else {return UITableViewCell()}
         
-        let post = PostController.shared.allPosts[indexPath.row]
+        let post = PostController.shared.joinedPosts[indexPath.row]
         
         if let student = StudentController.shared.currentStudent {
             cell.updateViews(post, student)
@@ -55,16 +56,16 @@ class PostListViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
-    
-    /*
      // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+        if segue.identifier == "toDetailView" {
+            if let detailVC = segue.destination as? PostDetailViewController {
+                if let indexPath = postTableView.indexPathForSelectedRow {
+                    let post = PostController.shared.allPosts[indexPath.row]
+                    detailVC.post = post
+                }
+            }
+        }
      }
-     */
-    
 }
 

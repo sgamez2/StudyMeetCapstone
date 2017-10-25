@@ -15,16 +15,27 @@ class PostController {
     var posts = [Post]()
     var allPosts = [Post]()
     var studentPosts = [Post]()
+    var joinedPosts = [Post]()
     let postRef = Database.database().reference()
     
-    func newPost(with date: String, postDescription: String, postTitle: String, schoolName: String, creatorUid: String, studySubject: String, subcategorySubject: String, members: [String] , completion: @escaping (_ success: Bool) -> Void) {
+    func newPost(with date: String, postDescription: String, postTitle: String, schoolName: String, creatorUid: String, studySubject: String, subcategorySubject: String, addressName: String, address: String, members: [String], completion: @escaping (_ success: Bool) -> Void) {
         
-        let post = Post(date: date, postDescription: postDescription, postTitle: postTitle, creatorUid: creatorUid, schoolName: schoolName, studySubject: studySubject, subcategorySubject: subcategorySubject, members: members)
+        let post = Post(date: date, postDescription: postDescription, postTitle: postTitle, creatorUid: creatorUid, schoolName: schoolName, studySubject: studySubject, subcategorySubject: subcategorySubject, addressName: addressName, address: address, members: members)
 
         postRef.child("Posts").childByAutoId().setValue(post.dictionaryRepresentaion)
         completion(true)
     }
- 
+    
+    func joinGroup(post: Post) {
+        guard let currentStudent = StudentController.shared.currentStudent else {return}
+        post.members.append(currentStudent.identifier)
+        
+    }
+    
+    func fetchJoinedPosts(completion: @escaping() -> Void) {
+       
+    }
+    
     func fetchStudentPosts(completion: @escaping() -> Void) {
         var fetchedStudentPosts: [Post] = []
         guard let currentStudent = StudentController.shared.currentStudent else { return }
@@ -42,7 +53,7 @@ class PostController {
         })
     }
     
-    func fetchPosts(by genSubject: String, completion: @escaping() -> Void) {
+    func fetchAllPosts(completion: @escaping() -> Void) {
         var fetchedPosts: [Post] = []
         self.postRef.child("Posts").observeSingleEvent(of: .value, with: { (snapshot) in
             if let postsDictionary = snapshot.value as? [String:Any] {

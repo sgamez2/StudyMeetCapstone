@@ -68,7 +68,6 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.84706419830000002" green="0.95180787160000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="mif-lS-3UL" firstAttribute="top" secondItem="nZl-bu-TBC" secondAttribute="bottom" constant="25" id="3YI-QC-i4X"/>
                             <constraint firstItem="cVg-53-JBo" firstAttribute="trailing" secondItem="nZl-bu-TBC" secondAttribute="trailing" constant="35" id="B4Z-d5-MiK"/>
@@ -288,6 +287,6 @@
         <image name="DefaultProfilePicture" width="600" height="600"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Jp1-9w-ia0"/>
+        <segue reference="362-Wy-AQ4"/>
     </inferredMetricsTieBreakers>
 </document>

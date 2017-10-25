@@ -20,6 +20,9 @@
 		201B63081F9E8C6100DFB4DE /* LaunchScreenCopyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B63071F9E8C6100DFB4DE /* LaunchScreenCopyViewController.swift */; };
 		20290A2C1F8D7E32001CBADC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20290A2B1F8D7E32001CBADC /* GoogleService-Info.plist */; };
 		20451F5B1F9EA6B300CA3D7E /* StudentPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20451F5A1F9EA6B300CA3D7E /* StudentPostTableViewCell.swift */; };
+		20A996B41FA0ECBF0041F046 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A996B31FA0ECBF0041F046 /* PostDetailViewController.swift */; };
+		20C245BF1FA10F8600B5BD9B /* JoinedPostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C245BE1FA10F8600B5BD9B /* JoinedPostsTableViewCell.swift */; };
+		20C245C11FA1272600B5BD9B /* JoinedPostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C245C01FA1272600B5BD9B /* JoinedPostsTableViewController.swift */; };
 		20D4771A1F97EBDF00C79B72 /* StudyPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D477191F97EBDF00C79B72 /* StudyPostTableViewCell.swift */; };
 		20D4771D1F9A673C00C79B72 /* ProfileTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D4771C1F9A673C00C79B72 /* ProfileTabViewController.swift */; };
 		20D516D91F8C1E0E00F68C7D /* StudentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D516D81F8C1E0E00F68C7D /* StudentController.swift */; };
@@ -62,6 +65,9 @@
 		201B63071F9E8C6100DFB4DE /* LaunchScreenCopyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenCopyViewController.swift; sourceTree = "<group>"; };
 		20290A2B1F8D7E32001CBADC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		20451F5A1F9EA6B300CA3D7E /* StudentPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentPostTableViewCell.swift; sourceTree = "<group>"; };
+		20A996B31FA0ECBF0041F046 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		20C245BE1FA10F8600B5BD9B /* JoinedPostsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedPostsTableViewCell.swift; sourceTree = "<group>"; };
+		20C245C01FA1272600B5BD9B /* JoinedPostsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedPostsTableViewController.swift; sourceTree = "<group>"; };
 		20D477191F97EBDF00C79B72 /* StudyPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyPostTableViewCell.swift; sourceTree = "<group>"; };
 		20D4771C1F9A673C00C79B72 /* ProfileTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabViewController.swift; sourceTree = "<group>"; };
 		20D516D81F8C1E0E00F68C7D /* StudentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentController.swift; sourceTree = "<group>"; };
@@ -178,6 +184,8 @@
 				2002E6A51F8D488F00581A4E /* LoginViewController.swift */,
 				20E2FC251F8FE5EF006548D2 /* AddPostViewController.swift */,
 				20D4771C1F9A673C00C79B72 /* ProfileTabViewController.swift */,
+				20A996B31FA0ECBF0041F046 /* PostDetailViewController.swift */,
+				20C245C01FA1272600B5BD9B /* JoinedPostsTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -187,6 +195,7 @@
 			children = (
 				20D477191F97EBDF00C79B72 /* StudyPostTableViewCell.swift */,
 				20451F5A1F9EA6B300CA3D7E /* StudentPostTableViewCell.swift */,
+				20C245BE1FA10F8600B5BD9B /* JoinedPostsTableViewCell.swift */,
 			);
 			name = Views;
 			path = "New Group";
@@ -365,15 +374,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				20D516DB1F8C344000F68C7D /* PostListViewController.swift in Sources */,
+				20A996B41FA0ECBF0041F046 /* PostDetailViewController.swift in Sources */,
 				2002E6A41F8D488100581A4E /* SignUpViewController.swift in Sources */,
 				201B63081F9E8C6100DFB4DE /* LaunchScreenCopyViewController.swift in Sources */,
 				20D516D91F8C1E0E00F68C7D /* StudentController.swift in Sources */,
 				20064A111F8BE6AF00277F34 /* Student.swift in Sources */,
+				20C245BF1FA10F8600B5BD9B /* JoinedPostsTableViewCell.swift in Sources */,
 				2002E6A61F8D488F00581A4E /* LoginViewController.swift in Sources */,
 				20D4771A1F97EBDF00C79B72 /* StudyPostTableViewCell.swift in Sources */,
 				20E19B121F9034AF005A5EEA /* DateFormatter.swift in Sources */,
 				200649FD1F8BE3D800277F34 /* AppDelegate.swift in Sources */,
 				20E2FC261F8FE5EF006548D2 /* AddPostViewController.swift in Sources */,
+				20C245C11FA1272600B5BD9B /* JoinedPostsTableViewController.swift in Sources */,
 				20451F5B1F9EA6B300CA3D7E /* StudentPostTableViewCell.swift in Sources */,
 				20D4771D1F9A673C00C79B72 /* ProfileTabViewController.swift in Sources */,
 				20E2FC231F8FD5AC006548D2 /* SubjectsHelper.swift in Sources */,

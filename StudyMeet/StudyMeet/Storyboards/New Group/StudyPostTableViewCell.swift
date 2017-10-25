@@ -18,15 +18,12 @@ class StudyPostTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     
-    
-    
-    
     func updateViews(_ post: Post, _ student: Student) {
+       
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
-        profileImageView.layer.masksToBounds = true
+        profileImageView.clipsToBounds = true
         
         StudentController.shared.fetchImageFromFIRStorage(post.creatorUid) { (image) in
-            
             self.profileImageView.image = image
         }
         
