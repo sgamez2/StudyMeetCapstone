@@ -18,24 +18,30 @@ class PostController {
     var joinedPosts = [Post]()
     let postRef = Database.database().reference()
     
+    
+    // MARK: - METHODS
+    
+    // Creating a new Post
     func newPost(with date: String, postDescription: String, postTitle: String, schoolName: String, creatorUid: String, studySubject: String, subcategorySubject: String, addressName: String, address: String, members: [String], completion: @escaping (_ success: Bool) -> Void) {
         
         let post = Post(date: date, postDescription: postDescription, postTitle: postTitle, creatorUid: creatorUid, schoolName: schoolName, studySubject: studySubject, subcategorySubject: subcategorySubject, addressName: addressName, address: address, members: members)
-
+        
         postRef.child("Posts").childByAutoId().setValue(post.dictionaryRepresentaion)
         completion(true)
     }
     
-    func joinGroup(post: Post) {
+    // Join a Post
+    func joinPost(post: Post) {
         guard let currentStudent = StudentController.shared.currentStudent else {return}
         post.members.append(currentStudent.identifier)
-        
     }
     
+    // Fetch all the posts that Student has joined
     func fetchJoinedPosts(completion: @escaping() -> Void) {
-       
+    
     }
     
+    // Fetches all the post created by Student
     func fetchStudentPosts(completion: @escaping() -> Void) {
         var fetchedStudentPosts: [Post] = []
         guard let currentStudent = StudentController.shared.currentStudent else { return }
@@ -53,6 +59,7 @@ class PostController {
         })
     }
     
+    // Fetches all Posts
     func fetchAllPosts(completion: @escaping() -> Void) {
         var fetchedPosts: [Post] = []
         self.postRef.child("Posts").observeSingleEvent(of: .value, with: { (snapshot) in

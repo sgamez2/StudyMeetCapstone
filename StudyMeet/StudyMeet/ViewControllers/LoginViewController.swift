@@ -15,10 +15,20 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
     
     // lifeCycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loginButton.layer.cornerRadius = 10
+        loginButton.clipsToBounds = true
+        
+        signUpButton.layer.cornerRadius = 10
+        signUpButton.clipsToBounds = true
+        
+        passwordTextField.isSecureTextEntry = true
+        
         do {
             try Auth.auth().signOut()
         } catch let signOutError as NSError {
@@ -27,6 +37,14 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - IBActions
+    @IBAction func showPasswordButtonTapped(_ sender: Any) {
+        if passwordTextField.isSecureTextEntry == false {
+            passwordTextField.isSecureTextEntry = true
+        } else {
+         passwordTextField.isSecureTextEntry = false
+        }
+    }
+    
     @IBAction func loginButtonTapped(_ sender: Any) {
         guard let username = usernameTextField.text,
             let password = passwordTextField.text,

@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class SignUpViewController: UIViewController {
     
@@ -29,6 +30,8 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
+        NotificationCenter.default.addObserver(self, selector: #selector(presentView(_:)), name: StudentController.presentErrorAlertNotification, object: nil)
+        passwordTextField.isSecureTextEntry = true
         
         popUpView.layer.cornerRadius = 15
         
@@ -46,7 +49,24 @@ class SignUpViewController: UIViewController {
     
     // MARK: - IBActions
     @IBAction func signUpButtonTapped(_ sender: Any) {
-        signUpClient()
+        guard let firstName = firstNameTextField.text,
+            let lastName = lastNameTextField.text,
+            let bio = bioDescriptionTextView.text,
+            let email = emailTextField.text,
+            let password = passwordTextField.text,
+            let schoolName = schoolNameTextField.text,
+            let phoneNumber = phoneNumberTextField.text,
+            let profilePic = profileImage.image
+             else { errorAlert(); return }
+        
+        StudentController.shared.newStudentWith(firstName: firstName, lastName: lastName, bio: bio, email: email, password: password, phoneNumber: phoneNumber, schoolName: schoolName, profilePic: profilePic, completion: { (success) in
+            if success {
+                self.performSegue(withIdentifier: "signedUp", sender: nil)
+                self.successAlert()
+            } else {
+                self.errorAlert()
+            }
+        })
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any){
@@ -79,6 +99,21 @@ class SignUpViewController: UIViewController {
     }
     
     // MARK: - Helper Functions
+    
+    @objc func presentView(_ notification: NSNotification) {
+        guard let userInfo = notification.userInfo,
+        let error = userInfo["error"] as? Error
+        else {return}
+        
+        if let errorCode = AuthErrorCode(rawValue: error._code) {
+            let alert = UIAlertController(title: "\(errorCode.errorMessage)", message: "Please try again", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+            print(errorCode.errorMessage)
+        }
+    }
+    
     func signUpClient() {
         guard let firstName = firstNameTextField.text,
             let lastName = lastNameTextField.text,

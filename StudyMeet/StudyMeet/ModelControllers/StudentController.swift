@@ -18,6 +18,7 @@ class StudentController {
     let storageRef = Storage.storage().reference()
     var students = [Student]()
     var currentStudent: Student?
+    static let presentErrorAlertNotification = Notification.Name("present")
     
     func newStudentWith(firstName: String, lastName: String,
                         bio: String, email: String, password: String, phoneNumber: String, schoolName: String, profilePic: UIImage,
@@ -25,7 +26,10 @@ class StudentController {
         
         Auth.auth().createUser(withEmail: email, password: password) { (authenticatedUser, error) in
             if let error = error {
-                print(error.localizedDescription)
+                
+//                NotificationCenter.default.post(name: Notification.Name(rawValue: "present"), object: error)
+                NotificationCenter.default.post(name: StudentController.presentErrorAlertNotification, object: nil, userInfo: ["error": error])
+                
             } else {
                 guard let authenticatedUser = authenticatedUser else  {return}
                 
@@ -36,6 +40,16 @@ class StudentController {
                 self.saveImageToFIRStorage(profileImage: profilePic)
                 completion(true)
             }
+        }
+    }
+    
+    // Error Handling
+    func handleError(_ error: Error) {
+        if let errorCode = AuthErrorCode(rawValue: error._code) {
+            let alert = UIAlertController(title: "\(errorCode.errorMessage)", message: "Please try again", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
+            
+            print(errorCode.errorMessage)
         }
     }
     
@@ -160,6 +174,24 @@ class StudentController {
     }
 }
 
+extension AuthErrorCode {
+    var errorMessage: String {
+        switch self {
+        case .emailAlreadyInUse:
+            return "The email is already in use with another account"
+        case .userDisabled:
+            return "Your account has been disabled. Please contact support."
+        case .invalidEmail, .invalidSender, .invalidRecipientEmail:
+            return "Please enter a valid email"
+        case .networkError:
+            return "Network error. Please try again."
+        case .weakPassword:
+            return "Your password is too weak"
+        default:
+            return "Unknown error occurred, please try again!"
+        }
+    }
+}
 
 
 

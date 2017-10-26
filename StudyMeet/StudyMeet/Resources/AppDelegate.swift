@@ -24,9 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSPlacesClient.provideAPIKey("AIzaSyDegURsAPgVPEOSZJl9F9nNXIoyh3_37nY")
         GMSServices.provideAPIKey("AIzaSyDegURsAPgVPEOSZJl9F9nNXIoyh3_37nY")
         
-//        StudentController.shared.logoutStudent { (success) in
-//            print(success)
-//        }
+        let temporaryDirectory = NSTemporaryDirectory()
+        let urlCache = URLCache(memoryCapacity: 25000000, diskCapacity: 50000000, diskPath: temporaryDirectory)
+        URLCache.shared = urlCache
+        
+        StudentController.shared.logoutStudent { (success) in
+            print(success)
+        }
         
         return true
     }

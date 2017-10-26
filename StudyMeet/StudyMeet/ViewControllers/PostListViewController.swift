@@ -19,13 +19,14 @@ class PostListViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
 //        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         searchBar.delegate = self
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     // MARK: - Helper Methods
     // Search Bar
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchSubject = searchBar.text else {return}
-
+//        guard let searchSubject = searchBar.text else {return}
+//
 //        PostController.shared.fetchPosts(by: searchSubject) {
 //            DispatchQueue.main.async {
 //                self.postTableView.reloadData()
@@ -36,7 +37,7 @@ class PostListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return PostController.shared.joinedPosts.count
+        return PostController.shared.allPosts.count
     }
     
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -45,8 +46,9 @@ class PostListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = self.postTableView.dequeueReusableCell(withIdentifier: "studyPostCell", for: indexPath) as? StudyPostTableViewCell else {return UITableViewCell()}
+        cell.setNeedsLayout()
         
-        let post = PostController.shared.joinedPosts[indexPath.row]
+        let post = PostController.shared.allPosts[indexPath.row]
         
         if let student = StudentController.shared.currentStudent {
             cell.updateViews(post, student)
